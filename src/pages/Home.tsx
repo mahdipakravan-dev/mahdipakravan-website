@@ -12,15 +12,21 @@ const md = `
 const github = 'https://github.com/mahdipakravan'
 `;
 
+let mountedBefore = false;
+
 function Home() {
   const frame1 = useOnMountAnimation({
     delayTime: 1000,
+    showAnimation: !mountedBefore,
   });
   const frame2 = useOnMountAnimation({
     delayTime: 4000,
+    showAnimation: !mountedBefore,
   });
   const frame3 = useOnMountAnimation({
     delayTime: 6500,
+    showAnimation: !mountedBefore,
+    onAnimationEnd: () => (mountedBefore = true),
   });
 
   return (
