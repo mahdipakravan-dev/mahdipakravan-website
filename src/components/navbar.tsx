@@ -16,14 +16,14 @@ export const Navbar = (props: Props) => {
   return (
     <nav
       className={
-        "w-full flex sticky top-0 text-secondary-50 leading-10 px-2 border border-transparent border-b-stroke"
+        "w-full flex justify-between sticky top-0 text-secondary-50 leading-10 border border-transparent border-b-stroke"
       }
     >
-      <span className={"w-1/6"}>mahdi-pakravan</span>
+      <span className={"min-w-min lg:w-1/6 pl-2"}>mahdi-pakravan</span>
 
       <ul
         className={
-          "hidden md:flex w-4/6 flex justify-start items-center h-full"
+          "hidden lg:flex w-4/6 flex justify-start items-center h-full"
         }
       >
         {defaultNavItems?.map((nav) => (
@@ -35,8 +35,8 @@ export const Navbar = (props: Props) => {
         ))}
       </ul>
 
-      <div className={"flex justify-end items-center w-1/6"}>
-        <i className={"ri-menu-fill cursor-pointer"} />
+      <div className={"flex justify-end items-center w-20 sm:w-1/6"}>
+        <i className={"ri-menu-fill cursor-pointer pr-2"} />
       </div>
     </nav>
   );
