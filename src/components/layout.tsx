@@ -20,7 +20,7 @@ export const Layout = (props: Props) => {
         <Navbar />
         <main className={"flex"}>
           <Aside />
-          <div className={"w-5/6 p-2"}>{props.children}</div>
+          <div className={"w-5/6 p-2 h-[88vh]"}>{props.children}</div>
         </main>
         <Footer />
       </div>
