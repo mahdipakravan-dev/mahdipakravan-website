@@ -13,21 +13,21 @@ const gradient = "bg-background";
 
 export const Layout = (props: Props) => {
   return (
-    <div className={"middle_wrap"}>
+    <>
       <div
         className={buildClassNames(
-          "relative border border-stroke rounded middle_content",
+          "relative border border-stroke rounded middle_wrap",
           gradient
         )}
       >
         <Navbar />
-        <main className={"flex"}>
+        <main className={"flex middle_content"}>
           <Aside />
           <div className={"w-full md:w-5/6 h-[100vh]"}>{props.children}</div>
         </main>
         <Footer />
       </div>
-    </div>
+    </>
   );
 };
 

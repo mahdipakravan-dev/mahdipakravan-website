@@ -1,21 +1,27 @@
 import * as React from "react";
-import useAsync from "../utils/hooks/useAsync";
-import { callApi } from "../utils/api";
-import { REQUEST_NAVIGATION } from "../constants/webservices";
 import { useState } from "react";
-import { first } from "../utils/array";
 import { buildClassNames } from "../utils/css";
-import { useNavigate } from "react-router";
-import { ROUTE_ABOUT } from "../constants/routes";
+import { useNavigate, RouteMatch, useLocation } from "react-router";
+import {
+  ROUTE_ABOUT,
+  ROUTE_BLOG,
+  ROUTE_CONTACT,
+  ROUTE_HOME,
+} from "../constants/routes";
 
 type Props = {};
 
-const defaultNavItems = ["_home", "_about", "_blog", "_contact"];
+const defaultNavItems = [
+  { title: "_home", route: ROUTE_HOME },
+  { title: "_about", route: ROUTE_ABOUT },
+  { title: "_blog", route: ROUTE_BLOG },
+  { title: "_contact", route: ROUTE_CONTACT },
+];
 
 export const Navbar = (props: Props) => {
-  const [currentNav, setCurrentNav] = useState(first(defaultNavItems));
   const [navbarOpen, setNavbarOpen] = useState(false);
   const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   console.log(navbarOpen);
   return (
@@ -32,14 +38,12 @@ export const Navbar = (props: Props) => {
             "hidden lg:flex w-4/6 flex justify-start items-center h-full"
           }
         >
-          {defaultNavItems?.map((nav) => (
+          {defaultNavItems?.map(({ title, route }) => (
             <NavbarItem
-              isActive={currentNav === nav}
-              onClick={() => {
-                navigate(ROUTE_ABOUT);
-                setCurrentNav(nav);
-              }}
-              title={nav}
+              onClick={() => navigate(route)}
+              isActive={pathname.includes(route)}
+              route={route}
+              title={title}
             />
           ))}
         </ul>
@@ -64,11 +68,12 @@ export const Navbar = (props: Props) => {
           "border border-transparent border-t-stroke"
         )}
       >
-        {defaultNavItems?.map((nav) => (
+        {defaultNavItems?.map(({ title, route }) => (
           <MobileNavbarItem
-            isActive={false}
-            onClick={() => setCurrentNav(nav)}
-            title={nav}
+            onClick={() => navigate(route)}
+            isActive={pathname.includes(route)}
+            route={route}
+            title={title}
           />
         ))}
       </div>
@@ -77,10 +82,17 @@ export const Navbar = (props: Props) => {
 };
 type NavbarItemProps = {
   title: string;
+  route: string;
   isActive: boolean;
   onClick: NoneToVoidFunction;
 };
-export const NavbarItem = ({ title, onClick, isActive }: NavbarItemProps) => {
+export const NavbarItem = ({
+  title,
+  route,
+  isActive,
+  onClick,
+}: NavbarItemProps) => {
+  const navigator = useNavigate();
   return (
     <li
       onClick={onClick}
@@ -96,14 +108,16 @@ export const NavbarItem = ({ title, onClick, isActive }: NavbarItemProps) => {
 
 export const MobileNavbarItem = ({
   title,
-  onClick,
+  route,
   isActive,
+  onClick,
 }: NavbarItemProps) => {
   return (
     <li
       onClick={onClick}
       className={buildClassNames(
-        "py-6 px-2 border border-transparent border-b-stroke cursor-pointer"
+        "py-6 px-2 border border-transparent border-b-stroke cursor-pointer",
+        isActive && "bg-secondary-50"
       )}
     >
       {title}

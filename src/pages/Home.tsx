@@ -24,7 +24,7 @@ function Home() {
         {">"} Frontend Engineer :)
       </span>
 
-      <Code markdown={md} />
+      <Code className={"mb-20"} markdown={md} />
     </div>
   );
 }
