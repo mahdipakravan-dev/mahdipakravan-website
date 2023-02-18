@@ -1,6 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./Home.css";
 import { Code } from "../components/code";
+import { useDelayUnmount } from "../utils/hooks/useDelayOnMount";
+import { buildClassNames } from "../utils/css";
+import { useOnMountAnimation } from "../utils/hooks/useOnMountAnimation";
 
 const md = `
 //welcome to my portfolio website !
@@ -10,21 +13,44 @@ const github = 'https://github.com/mahdipakravan'
 `;
 
 function Home() {
+  const frame1 = useOnMountAnimation({
+    delayTime: 1000,
+  });
+  const frame2 = useOnMountAnimation({
+    delayTime: 4000,
+  });
+  const frame3 = useOnMountAnimation({
+    delayTime: 6500,
+  });
+
   return (
     <div
       className={
         "h-full text-secondary-300 flex flex-col justify-center items-start"
       }
     >
-      <span className={"font-regular text-sm text-secondary-50"}>
+      <span
+        className={buildClassNames(
+          "font-regular text-sm text-secondary-50",
+          frame1
+        )}
+      >
         Hello everyone , I'm ...
       </span>
-      <span className={"font-semibold text-4xl mt-2"}>Mahdi Pakravan.</span>
-      <span className={"font-regular text-xl text-secondary-200 mt-2 mb-20"}>
+
+      <span className={buildClassNames("font-semibold text-4xl mt-2", frame2)}>
+        Mahdi Pakravan.
+      </span>
+      <span
+        className={buildClassNames(
+          "font-regular text-xl text-secondary-200 mt-2 mb-20",
+          frame2
+        )}
+      >
         {">"} Frontend Engineer :)
       </span>
 
-      <Code className={"mb-20"} markdown={md} />
+      <Code className={buildClassNames("mb-20", frame3)} markdown={md} />
     </div>
   );
 }
