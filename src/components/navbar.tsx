@@ -5,6 +5,8 @@ import { REQUEST_NAVIGATION } from "../constants/webservices";
 import { useState } from "react";
 import { first } from "../utils/array";
 import { buildClassNames } from "../utils/css";
+import { useNavigate } from "react-router";
+import { ROUTE_ABOUT } from "../constants/routes";
 
 type Props = {};
 
@@ -13,6 +15,7 @@ const defaultNavItems = ["_home", "_about", "_blog", "_contact"];
 export const Navbar = (props: Props) => {
   const [currentNav, setCurrentNav] = useState(first(defaultNavItems));
   const [navbarOpen, setNavbarOpen] = useState(false);
+  const navigate = useNavigate();
 
   console.log(navbarOpen);
   return (
@@ -32,7 +35,10 @@ export const Navbar = (props: Props) => {
           {defaultNavItems?.map((nav) => (
             <NavbarItem
               isActive={currentNav === nav}
-              onClick={() => setCurrentNav(nav)}
+              onClick={() => {
+                navigate(ROUTE_ABOUT);
+                setCurrentNav(nav);
+              }}
               title={nav}
             />
           ))}

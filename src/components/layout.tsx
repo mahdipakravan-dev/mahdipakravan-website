@@ -4,6 +4,8 @@ import { buildClassNames } from "../utils/css";
 import { Navbar } from "./navbar";
 import { IconLink, Link } from "./link";
 import "./layout.css";
+import { useLocation } from "react-router";
+import { ROUTE_HOME } from "../constants/routes";
 
 type Props = PropsWithChildren;
 
@@ -11,37 +13,37 @@ const gradient = "bg-background";
 
 export const Layout = (props: Props) => {
   return (
-    <>
+    <div className={"middle_wrap"}>
       <div
         className={buildClassNames(
-          "relative border border-stroke rounded",
+          "relative border border-stroke rounded middle_content",
           gradient
         )}
       >
         <Navbar />
         <main className={"flex"}>
           <Aside />
-          <div className={"w-full md:w-5/6 h-[100vh] middle_wrap"}>
-            <div className="middle_content">
-              <button className={"hover:bg-red-200"}>Salam</button>
-              {props.children}
-            </div>
-          </div>
+          <div className={"w-full md:w-5/6 h-[100vh]"}>{props.children}</div>
         </main>
         <Footer />
       </div>
-    </>
+    </div>
   );
 };
 
 export const Aside = () => {
+  const { pathname } = useLocation();
+
+  const showBorder = pathname !== ROUTE_HOME;
+
   return (
     <aside
-      className={
-        "hidden md:block md:w-1/6 border border-transparent border-r-stroke min-h-[88vh]"
-      }
+      className={buildClassNames(
+        "hidden md:block md:w-1/6 min-h-[88vh]",
+        showBorder && "border border-transparent border-r-stroke"
+      )}
     >
-      <div className="w-full bg-red-200">asad</div>
+      {/*  @TODO Implement file structure*/}
     </aside>
   );
 };
