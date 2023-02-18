@@ -14,15 +14,18 @@ export const Layout = (props: Props) => {
     <>
       <div
         className={buildClassNames(
-          "relative m-2 border border-stroke rounded",
+          "relative border border-stroke rounded",
           gradient
         )}
       >
         <Navbar />
         <main className={"flex"}>
           <Aside />
-          <div className={"w-full md:w-5/6 p-2 h-[88vh] middle_wrap"}>
-            <div className="middle_content">{props.children}</div>
+          <div className={"w-full md:w-5/6 h-[100vh] middle_wrap"}>
+            <div className="middle_content">
+              <button className={"hover:bg-red-200"}>Salam</button>
+              {props.children}
+            </div>
           </div>
         </main>
         <Footer />
