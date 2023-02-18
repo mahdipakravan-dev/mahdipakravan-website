@@ -1,0 +1,1 @@
+type NoneToVoidFunction = () => void

@@ -1,0 +1,5 @@
+{
+  "navbar": {
+    "items": ["_home", "_about", "_blog", "_contact"]
+  }
+}
