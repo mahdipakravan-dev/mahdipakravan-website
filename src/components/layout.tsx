@@ -2,6 +2,7 @@ import * as React from "react";
 import { PropsWithChildren } from "react";
 import { buildClassNames } from "../utils/css";
 import { Navbar } from "./navbar";
+import { IconLink, Link } from "./link";
 
 type Props = PropsWithChildren;
 
@@ -18,46 +19,46 @@ export const Layout = (props: Props) => {
       >
         <Navbar />
         <main className={"flex"}>
-          <aside
-            className={
-              "w-1/6 border border-transparent border-r-stroke min-h-[88vh]"
-            }
-          >
-            <div className="w-full bg-red-200">asad</div>
-          </aside>
-          <div className={"w-5/6 p-2"}>
-            Middle Column And Children {props.children}
-          </div>
+          <Aside />
+          <div className={"w-5/6 p-2"}>{props.children}</div>
         </main>
-        <footer
-          className={
-            "sticky bottom-0 border border-transparent border-t-stroke text-secondary-50 leading-7 px-2 flex justify-between items-center"
-          }
-        >
-          <div>
-            <span>find me in : </span>
-            <span
-              className={"px-2 border py-1 border-transparent border-x-stroke"}
-            >
-              <i className={"ri-twitch-fill"} />
-            </span>
-            <span
-              className={"px-2 border py-1 border-transparent border-x-stroke"}
-            >
-              <i className={"ri-twitter-fill"} />
-            </span>
-            <span
-              className={"px-2 border py-1 border-transparent border-x-stroke"}
-            >
-              <i className={"ri-telegram-fill"} />
-            </span>
-          </div>
-          <div className={"flex justify-between items-center"}>
-            <i className={"ri-github-fill pr-2"} />
-            github
-          </div>
-        </footer>
+        <Footer />
       </div>
     </>
+  );
+};
+
+export const Aside = () => {
+  return (
+    <aside
+      className={
+        "hidden md:block md:w-1/6 border border-transparent border-r-stroke min-h-[88vh]"
+      }
+    >
+      <div className="w-full bg-red-200">asad</div>
+    </aside>
+  );
+};
+
+export const Footer = () => {
+  return (
+    <footer
+      className={
+        "sticky bottom-0 border border-transparent border-t-stroke text-secondary-50 leading-7 px-2 flex justify-between items-center"
+      }
+    >
+      <div>
+        <span className={"hidden md:contents"}>find me in : </span>
+        <IconLink icon={"ri-twitch-fill"} className={"md:pl-2"} />
+        <IconLink icon={"ri-twitter-fill"} />
+        <IconLink icon={"ri-telegram-fill"} />
+      </div>
+      <Link
+        icon={<i className={"ri-github-fill pr-2"} />}
+        title={"github"}
+        href={"https://github.com/mahdipakravan-dev"}
+        target={"_blank"}
+      />
+    </footer>
   );
 };
