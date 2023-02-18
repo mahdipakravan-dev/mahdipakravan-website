@@ -3,6 +3,7 @@ import { PropsWithChildren } from "react";
 import { buildClassNames } from "../utils/css";
 import { Navbar } from "./navbar";
 import { IconLink, Link } from "./link";
+import "./layout.css";
 
 type Props = PropsWithChildren;
 
@@ -20,7 +21,9 @@ export const Layout = (props: Props) => {
         <Navbar />
         <main className={"flex"}>
           <Aside />
-          <div className={"w-5/6 p-2 h-[88vh]"}>{props.children}</div>
+          <div className={"w-full md:w-5/6 p-2 h-[88vh] middle_wrap"}>
+            <div className="middle_content">{props.children}</div>
+          </div>
         </main>
         <Footer />
       </div>
