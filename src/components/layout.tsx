@@ -6,6 +6,7 @@ import { IconLink, Link } from "./link";
 import "./layout.css";
 import { useLocation } from "react-router";
 import { ROUTE_HOME } from "../constants/routes";
+import {CASES} from "../constants/cases";
 
 type Props = PropsWithChildren;
 
@@ -36,13 +37,39 @@ export const Aside = () => {
 
   const showBorder = pathname !== ROUTE_HOME;
 
+  const renderFile = (...args : any[]) => {
+    return <div className={""}><i className={"ri-arrow-down-fill"}/> {...args}</div>
+  }
+
+  const renderFolders = ({id,title,childs,isDir} : Case) => {
+
+    return (
+      <div className={"case pl-2"}>
+        <>
+          {`${isDir ? "📁" : "🗒️"} ${title}`}
+
+          <br/>
+
+          <div className={"pl-5 pt-1"}>
+            {childs && childs.map(cases =>
+                renderFolders(cases)
+            )}
+          </div>
+        </>
+      </div>
+    )
+  }
+
   return (
     <aside
       className={buildClassNames(
-        "hidden md:block md:w-1/6 min-h-[88vh]",
-        showBorder && "border border-transparent border-r-stroke"
+        "hidden md:block md:w-1/6 min-h-[88vh] text-secondary-50",
+        showBorder && "border border-transparent border-r-stroke py-2"
       )}
     >
+      <>
+        {renderFolders(CASES)}
+      </>
       {/*  @TODO Implement file structure*/}
     </aside>
   );
