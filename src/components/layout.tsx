@@ -1,12 +1,12 @@
 import * as React from "react";
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, useState } from "react";
 import { buildClassNames } from "../utils/css";
 import { Navbar } from "./navbar";
 import { IconLink, Link } from "./link";
 import "./layout.css";
 import { useLocation } from "react-router";
-import { ROUTE_HOME } from "../constants/routes";
-import {CASES} from "../constants/cases";
+import { ROUTE_ABOUT, ROUTE_HOME } from "../constants/routes";
+import { CASES } from "../constants/cases";
 
 type Props = PropsWithChildren;
 
@@ -32,33 +32,85 @@ export const Layout = (props: Props) => {
   );
 };
 
+const renderArrow = (isOpen: boolean) => {
+  return (
+    <i
+      className={buildClassNames(
+        "pr-1",
+        isOpen ? "ri-arrow-down-s-fill" : "ri-arrow-up-s-fill"
+      )}
+    />
+  );
+};
 export const Aside = () => {
   const { pathname } = useLocation();
 
   const showBorder = pathname !== ROUTE_HOME;
 
-  const renderFile = (...args : any[]) => {
-    return <div className={""}><i className={"ri-arrow-down-fill"}/> {...args}</div>
-  }
+  const isInAboutRoute = pathname.includes(ROUTE_ABOUT);
 
-  const renderFolders = ({id,title,childs,isDir} : Case) => {
+  const renderFolders = ({ id, title, childs, isDir, isParent }: Case) => {
+    const [parentIsOpen, setParentIsOpen] = useState(true);
+    const [folderIsOpen, setFolderIsOpen] = useState(true);
+
+    const renderParent = (title: string) => {
+      return (
+        <div
+          className={"flex justify-start items-center cursor-pointer pr-2"}
+          onClick={() => setParentIsOpen((p) => !p)}
+        >
+          {renderArrow(parentIsOpen)}
+          <span>{title}</span>
+        </div>
+      );
+    };
+
+    const renderCase = ({
+      isParent,
+      title,
+      isDir,
+      id,
+    }: Pick<Case, "title" | "id" | "isDir" | "isParent">) => {
+      const getIcon = (
+        <i
+          className={buildClassNames(
+            isDir ? "ri-folder-2-fill" : "ri-reactjs-fill",
+            "pr-1"
+          )}
+        />
+      );
+      return (
+        <div
+          className={"flex items-between cursor-pointer"}
+          onClick={() => setFolderIsOpen((p) => !p)}
+        >
+          {isDir && renderArrow(folderIsOpen)} {getIcon} {title}
+        </div>
+      );
+    };
+
+    const shouldRenderChild = isParent ? parentIsOpen : folderIsOpen;
 
     return (
-      <div className={"case pl-2"}>
+      <div className={"case pl-2 text-sm"}>
         <>
-          {`${isDir ? "📁" : "🗒️"} ${title}`}
+          {isParent
+            ? renderParent(title)
+            : renderCase({ title, isParent, isDir, id })}
 
-          <br/>
-
-          <div className={"pl-5 pt-1"}>
-            {childs && childs.map(cases =>
-                renderFolders(cases)
+          <div
+            className={buildClassNames(
+              "pl-4 pt-1",
+              "transition-all",
+              shouldRenderChild ? "opacity-1 h-auto" : "opacity-0 h-0"
             )}
+          >
+            {childs && childs.map((cases) => renderFolders(cases))}
           </div>
         </>
       </div>
-    )
-  }
+    );
+  };
 
   return (
     <aside
@@ -67,9 +119,7 @@ export const Aside = () => {
         showBorder && "border border-transparent border-r-stroke py-2"
       )}
     >
-      <>
-        {renderFolders(CASES)}
-      </>
+      <>{isInAboutRoute && renderFolders(CASES)}</>
       {/*  @TODO Implement file structure*/}
     </aside>
   );

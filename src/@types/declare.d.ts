@@ -1,8 +1,9 @@
-type NoneToVoidFunction = () => void
+type NoneToVoidFunction = () => void;
 
 type Case = {
-    id : string,
-    title : string,
-    isDir : boolean,
-    childs ?: Case[]
-}
+  id: string;
+  title: string;
+  isDir: boolean;
+  isParent?: boolean;
+  childs?: Case[];
+};
