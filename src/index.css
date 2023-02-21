@@ -7,3 +7,8 @@ body {
     font-family: Fira, serif;
     overflow: hidden;
 }
+
+pre:focus-visible{
+    border: none;
+    outline: none;
+}
