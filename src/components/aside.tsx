@@ -55,19 +55,34 @@ export const Aside = () => {
           )}
         />
       );
+
+      const onClickCheckbox = () => {
+        let currentStacks = searchParams.get("stacks")?.split(",") || [];
+        if (currentStacks.includes(title)) {
+          currentStacks = currentStacks.filter((stack) => stack !== title);
+          setChecked(false);
+        } else {
+          currentStacks.push(title);
+          setChecked(true);
+        }
+        if (!currentStacks.length) searchParams.delete("stacks");
+        else searchParams.set("stacks", currentStacks.join(","));
+        setSearchParams(searchParams);
+      };
+
       if (isCheckBox)
         return (
           <div
             className="flex items-center justify-center mt-2"
-            onClick={() => setChecked((p) => !p)}
+            onClick={onClickCheckbox}
           >
             {getIcon}
             <label className="container">
               {title}
               <input
                 type="checkbox"
-                onChange={() => setChecked((p) => !p)}
-                checked={checked}
+                onChange={onClickCheckbox}
+                checked={searchParams.get("stacks")?.includes(title)}
               />
               <span className="checkmark" />
             </label>
