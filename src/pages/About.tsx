@@ -2,9 +2,9 @@ import React from "react";
 import "./Home.css";
 import { Code } from "../components/code";
 import { useSearchParams } from "react-router-dom";
+import { Tweet } from "../components/tweet";
 
-const md = `
-/**
+const md = `/**
   * About me
   * I have 5 years of еxperience in web
   * development lorem ipsum dolor sit amet,
@@ -27,8 +27,25 @@ function About() {
   console.log(searchParams.get("name"));
 
   return (
-    <div className={"w-full h-full flex justify-start text-secondary-50 pl-2"}>
-      <Code markdown={md} />
+    <div
+      className={"w-full h-full flex justify-between text-secondary-50 pb-20"}
+    >
+      <div className="pr-32 pt-8">
+        <Code markdown={md} />
+      </div>
+      <div
+        className={
+          "border border-transparent p-2 border-l-stroke w-full pt-8 overflow-y-scroll"
+        }
+      >
+        <Code markdown={`const here = "..."`} />
+
+        <div className="tweets">
+          {[1, 2, 3, 4, 5, 6].map((tweet) => (
+            <Tweet />
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

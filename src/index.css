@@ -9,6 +9,25 @@ body {
 }
 
 pre:focus-visible{
-    border: none;
+    @apply border border-stroke;
     outline: none;
+}
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    @apply bg-background;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    @apply bg-secondary-50;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
