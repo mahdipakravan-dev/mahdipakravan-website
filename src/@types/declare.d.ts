@@ -8,3 +8,11 @@ type Case = {
   isCheckBox?: boolean;
   childs?: Case[];
 };
+
+type Project = {
+  id: string;
+  title: string;
+  link: string;
+  stack: string;
+  sourceCodeUrl: string;
+};

@@ -6,12 +6,12 @@ export const Projects_cases: Case = {
   childs: [
     {
       id: "S_6",
-      title: "Node.js",
+      title: "nodejs",
       isCheckBox: true,
     },
     {
       id: "S_6",
-      title: "React.js",
+      title: "reactjs",
       isCheckBox: true,
     },
     {

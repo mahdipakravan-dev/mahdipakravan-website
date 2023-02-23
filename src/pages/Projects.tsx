@@ -9,14 +9,27 @@ import { useEffect } from "react";
 type Props = {};
 export const Projects = (props: Props) => {
   let [searchParams, setSearchParams] = useSearchParams();
-  const getProjectsAsync = useAsync(() =>
-    callApi(REQUEST_PROJECTS + "?stack=nodejs", { method: "get" })
+  const getProjectsAsync = useAsync<Array<Project>>(
+    ({ stacks }: { stacks: string }) => {
+      console.log({ stacks });
+      return callApi(REQUEST_PROJECTS + `?stack_like=(${stacks})`, {
+        method: "get",
+      });
+    }
   );
 
   useEffect(() => {
-    getProjectsAsync.run({});
-  }, []);
-  console.log(searchParams.get("stacks"), getProjectsAsync.result);
+    getProjectsAsync.run({
+      stacks: searchParams.get("stacks")?.split(",")?.join("|") || "",
+    });
+  }, [searchParams]);
 
-  return <div></div>;
+  console.log("Result : ", getProjectsAsync.result);
+  return (
+    <div>
+      {getProjectsAsync.result?.map((project) => (
+        <span>{JSON.stringify(project)}</span>
+      ))}
+    </div>
+  );
 };

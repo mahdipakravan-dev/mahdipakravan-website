@@ -35,7 +35,7 @@ const useAsync = <T = any, P = any>(
     );
   };
 
-  return { isLoading, error, result, run };
+  return { isLoading, error, result: result as T, run };
 };
 
 export default useAsync;
