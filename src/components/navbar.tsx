@@ -7,6 +7,7 @@ import {
   ROUTE_BLOG,
   ROUTE_CONTACT,
   ROUTE_HOME,
+  ROUTE_PROJECTS,
 } from "../constants/routes";
 
 type Props = {};
@@ -14,6 +15,7 @@ type Props = {};
 const defaultNavItems = [
   { title: "_home", route: ROUTE_HOME },
   { title: "_about", route: ROUTE_ABOUT },
+  { title: "_projects", route: ROUTE_PROJECTS },
   { title: "_blog", route: ROUTE_BLOG },
   { title: "_contact", route: ROUTE_CONTACT },
 ];

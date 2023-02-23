@@ -12,7 +12,7 @@ export const Code = ({ markdown, ...attr }: Props) => {
   });
 
   return (
-    <pre contentEditable {...attr}>
+    <pre {...attr}>
       <code className="language-typescript rounded">{markdown}</code>
     </pre>
   );
