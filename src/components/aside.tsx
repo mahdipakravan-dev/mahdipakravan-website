@@ -1,10 +1,11 @@
 import { useLocation } from "react-router";
-import { ROUTE_ABOUT, ROUTE_HOME } from "../constants/routes";
+import { ROUTE_ABOUT, ROUTE_HOME, ROUTE_PROJECTS } from "../constants/routes";
 import { useSearchParams } from "react-router-dom";
 import { useState } from "react";
 import { buildClassNames } from "../utils/css";
-import { CASES } from "../constants/cases";
+import { About_cases } from "../constants/about_cases";
 import * as React from "react";
+import { Projects_cases } from "../constants/projects_cases";
 
 const renderArrow = (isOpen: boolean) => {
   return (
@@ -24,15 +25,18 @@ export const Aside = () => {
 
   const isInAboutRoute = pathname.includes(ROUTE_ABOUT);
   const isInHomeRoute = pathname.includes(ROUTE_HOME);
+  const isInProjectsRoute = pathname.includes(ROUTE_PROJECTS);
 
-  const Folder = ({ id, title, childs, isDir, isParent }: Case) => {
+  const Folder = ({ id, title, childs, isDir, isParent, isCheckBox }: Case) => {
     const [parentIsOpen, setParentIsOpen] = useState(true);
     const [folderIsOpen, setFolderIsOpen] = useState(true);
 
     const renderParent = (title: string) => {
       return (
         <div
-          className={"flex justify-start items-center cursor-pointer pr-2"}
+          className={
+            "flex justify-start items-center cursor-pointer border border-t-transparent border-stroke pl-2 py-1"
+          }
           onClick={() => setParentIsOpen((p) => !p)}
         >
           {renderArrow(parentIsOpen)}
@@ -41,12 +45,8 @@ export const Aside = () => {
       );
     };
 
-    const renderCase = ({
-      isParent,
-      title,
-      isDir,
-      id,
-    }: Pick<Case, "title" | "id" | "isDir" | "isParent">) => {
+    const renderCase = ({ isParent, title, isDir, id, isCheckBox }: Case) => {
+      const [checked, setChecked] = useState(false);
       const getIcon = (
         <i
           className={buildClassNames(
@@ -55,6 +55,24 @@ export const Aside = () => {
           )}
         />
       );
+      if (isCheckBox)
+        return (
+          <div
+            className="flex items-center justify-center mt-2"
+            onClick={() => setChecked((p) => !p)}
+          >
+            {getIcon}
+            <label className="container">
+              {title}
+              <input
+                type="checkbox"
+                onChange={() => setChecked((p) => !p)}
+                checked={checked}
+              />
+              <span className="checkmark" />
+            </label>
+          </div>
+        );
       return (
         <div
           className={buildClassNames(
@@ -66,7 +84,16 @@ export const Aside = () => {
             setSearchParams({ file: title });
           }}
         >
-          {isDir && renderArrow(folderIsOpen)} {getIcon} {title}
+          {!isDir && (
+            <>
+              {getIcon} {title}
+            </>
+          )}
+          {isDir && (
+            <>
+              {renderArrow(folderIsOpen)} {getIcon} {title}
+            </>
+          )}
         </div>
       );
     };
@@ -74,11 +101,11 @@ export const Aside = () => {
     const shouldRenderChild = isParent ? parentIsOpen : folderIsOpen;
 
     return (
-      <div className={"case pl-2 text-sm"}>
+      <div className={"text-sm"}>
         <>
           {isParent
             ? renderParent(title)
-            : renderCase({ title, isParent, isDir, id })}
+            : renderCase({ title, isParent, isDir, id, isCheckBox })}
 
           <div
             className={buildClassNames(
@@ -89,7 +116,10 @@ export const Aside = () => {
           >
             {childs &&
               childs.map((cases) => (
-                <Folder key={`case__${cases.id}`} {...cases} />
+                <Folder
+                  key={`case__${cases.id}__${Math.random()}`}
+                  {...cases}
+                />
               ))}
           </div>
         </>
@@ -101,12 +131,12 @@ export const Aside = () => {
     <aside
       className={buildClassNames(
         "hidden md:block text-secondary-50",
-        showBorder &&
-          "border border-transparent border-r-stroke pr-8 py-4 md:w-auto",
+        showBorder && "border border-transparent border-r-stroke md:w-64",
         isInHomeRoute && "md:w-1/6"
       )}
     >
-      <>{isInAboutRoute && <Folder {...CASES} />}</>
+      <>{isInAboutRoute && <Folder {...About_cases} />}</>
+      <>{isInProjectsRoute && <Folder {...Projects_cases} />}</>
       {/*  @TODO Implement file structure*/}
     </aside>
   );

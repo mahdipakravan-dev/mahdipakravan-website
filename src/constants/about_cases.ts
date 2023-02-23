@@ -1,4 +1,4 @@
-export const CASES: Case = {
+export const About_cases: Case = {
   id: "S_1",
   title: "About Me :)",
   isDir: true,

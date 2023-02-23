@@ -14,7 +14,9 @@ import {
   ROUTE_CONTACT,
   ROUTE_HOME,
   ROUTE_PREFIX,
+  ROUTE_PROJECTS,
 } from "./constants/routes";
+import { Projects } from "./pages/Projects";
 
 createRoot(document.getElementById("app")!).render(
   <BrowserRouter>
@@ -28,6 +30,7 @@ createRoot(document.getElementById("app")!).render(
           />
           <Route index path={ROUTE_HOME} element={<Home />} />
           <Route index path={ROUTE_ABOUT} element={<About />} />
+          <Route index path={ROUTE_PROJECTS} element={<Projects />} />
           <Route index path={ROUTE_BLOG} element={<About />} />
           <Route index path={ROUTE_CONTACT} element={<About />} />
         </Route>

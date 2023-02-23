@@ -6,7 +6,7 @@ import { IconLink, Link } from "./link";
 import "./layout.css";
 import { useLocation } from "react-router";
 import { ROUTE_ABOUT, ROUTE_HOME } from "../constants/routes";
-import { CASES } from "../constants/cases";
+import { About_cases } from "../constants/cases";
 import { useSearchParams } from "react-router-dom";
 import { Aside } from "./aside";
 import { Footer } from "./footer";
