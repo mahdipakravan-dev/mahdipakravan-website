@@ -1,0 +1,8 @@
+.projects-wrapper {
+  display: grid;
+  place-items: center;
+  height: 85%;
+  overflow-y: scroll;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 18px;
+}

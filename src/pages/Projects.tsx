@@ -1,10 +1,11 @@
-// @flow
 import * as React from "react";
 import { useSearchParams } from "react-router-dom";
 import useAsync from "../utils/hooks/useAsync";
 import { callApi } from "../utils/api";
 import { REQUEST_PROJECTS } from "../constants/webservices";
 import { useEffect } from "react";
+import { Code } from "../components/code";
+import "./Projects.css";
 
 type Props = {};
 export const Projects = (props: Props) => {
@@ -26,9 +27,40 @@ export const Projects = (props: Props) => {
 
   console.log("Result : ", getProjectsAsync.result);
   return (
-    <div>
+    <div className={"projects-wrapper"}>
       {getProjectsAsync.result?.map((project) => (
-        <span>{JSON.stringify(project)}</span>
+        <article className={"w-full p-2"}>
+          <header className={"flex justify-start items-center"}>
+            <span className={"text-secondary-200 text-sm mr-2"}>
+              {project.title}
+            </span>
+            <Code markdown={`//ui_animation`} />
+          </header>
+          <div className={"border border-stroke rounded-none rounded-t-2xl"}>
+            <div>
+              <img
+                src="/project-1.png"
+                alt=""
+                style={{
+                  width: "100%",
+                  objectFit: "contain",
+                }}
+              />
+            </div>
+            <div className="border border-stroke rounded-none rounded-b-md">
+              <p className={"text-secondary-50 text-xs py-4 px-1"}>
+                Duis aute irure dolor in velit esse cillum dolore.
+              </p>
+              <button
+                className={
+                  "bg-primary-100 text-secondary-300 p-1 text-xs m-1 rounded hover:shadow-sm"
+                }
+              >
+                see demo
+              </button>
+            </div>
+          </div>
+        </article>
       ))}
     </div>
   );
