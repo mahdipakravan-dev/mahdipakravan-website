@@ -1,6 +1,7 @@
 import React from "react";
 import "./Home.css";
 import { Code } from "../components/code";
+import { useSearchParams } from "react-router-dom";
 
 const md = `
 /**
@@ -21,6 +22,10 @@ const md = `
 */
 `;
 function About() {
+  let [searchParams, setSearchParams] = useSearchParams();
+
+  console.log(searchParams.get("name"));
+
   return (
     <div className={"w-full h-full flex justify-start text-secondary-50 pl-2"}>
       <Code markdown={md} />

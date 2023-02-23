@@ -40,6 +40,7 @@ export const Navbar = (props: Props) => {
         >
           {defaultNavItems?.map(({ title, route }) => (
             <NavbarItem
+              key={`nav__${route}`}
               onClick={() => navigate(route)}
               isActive={pathname.includes(route)}
               route={route}
@@ -70,6 +71,7 @@ export const Navbar = (props: Props) => {
       >
         {defaultNavItems?.map(({ title, route }) => (
           <MobileNavbarItem
+            key={`nav__${route}`}
             onClick={() => navigate(route)}
             isActive={pathname.includes(route)}
             route={route}

@@ -1,7 +1,6 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom'
-import ReloadPrompt from './serviceworker/ReloadPrompt'
-import './App.css'
+import React from "react";
+import { Outlet } from "react-router-dom";
+import ReloadPrompt from "./serviceworker/ReloadPrompt";
 
 function App() {
   return (
@@ -9,7 +8,7 @@ function App() {
       <Outlet />
       <ReloadPrompt />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
