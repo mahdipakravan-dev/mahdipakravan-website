@@ -17,6 +17,7 @@ import {
   ROUTE_PROJECTS,
 } from "./constants/routes";
 import { Projects } from "./pages/Projects";
+import Contact from "./pages/Contact";
 
 createRoot(document.getElementById("app")!).render(
   <BrowserRouter>
@@ -32,7 +33,7 @@ createRoot(document.getElementById("app")!).render(
           <Route index path={ROUTE_ABOUT} element={<About />} />
           <Route index path={ROUTE_PROJECTS} element={<Projects />} />
           <Route index path={ROUTE_BLOG} element={<About />} />
-          <Route index path={ROUTE_CONTACT} element={<About />} />
+          <Route index path={ROUTE_CONTACT} element={<Contact />} />
         </Route>
       </Routes>
     </Layout>

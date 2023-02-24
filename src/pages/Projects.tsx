@@ -6,6 +6,7 @@ import { REQUEST_PROJECTS } from "../constants/webservices";
 import { useEffect } from "react";
 import { Code } from "../components/code";
 import "./Projects.css";
+import { Button } from "../components/button";
 
 type Props = {};
 export const Projects = (props: Props) => {
@@ -51,13 +52,7 @@ export const Projects = (props: Props) => {
               <p className={"text-secondary-50 text-xs py-4 px-1"}>
                 Duis aute irure dolor in velit esse cillum dolore.
               </p>
-              <button
-                className={
-                  "bg-primary-100 text-secondary-300 p-1 text-xs m-1 rounded hover:shadow-sm"
-                }
-              >
-                see demo
-              </button>
+              <Button>See demo</Button>
             </div>
           </div>
         </article>
