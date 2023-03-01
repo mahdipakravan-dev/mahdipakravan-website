@@ -27,11 +27,9 @@ function About() {
   console.log(searchParams.get("name"));
 
   return (
-    <div
-      className={"w-full h-full flex justify-between text-secondary-50 pb-20"}
-    >
-      <div className="pr-32 pt-8">
-        <Code markdown={md} />
+    <div className={"w-full h-full lg:flex text-secondary-50 pb-20"}>
+      <div className="pr-32 pt-8 grid items-center">
+        <Code markdown={md} className={"w-full"} />
       </div>
       <div
         className={
