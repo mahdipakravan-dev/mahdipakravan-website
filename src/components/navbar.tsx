@@ -36,7 +36,7 @@ export const Navbar = (props: Props) => {
 
         <ul
           className={
-            "hidden lg:flex w-4/6 flex justify-start items-center h-full"
+            "hidden lg:flex w-4/6 flex justify-start items-center h-full z-10"
           }
         >
           {defaultNavItems?.map(({ title, route }) => (
@@ -62,6 +62,7 @@ export const Navbar = (props: Props) => {
       </nav>
       <div
         className={buildClassNames(
+          "z-10",
           navbarOpen
             ? "visible h-auto opacity-1 top-10"
             : "invisible h-0 opacity-0 -top-10",
@@ -73,7 +74,10 @@ export const Navbar = (props: Props) => {
         {defaultNavItems?.map(({ title, route }) => (
           <MobileNavbarItem
             key={`nav__${route}`}
-            onClick={() => navigate(route)}
+            onClick={() => {
+              setNavbarOpen(false);
+              navigate(route);
+            }}
             isActive={pathname.includes(route)}
             route={route}
             title={title}
