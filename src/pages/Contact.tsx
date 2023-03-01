@@ -59,7 +59,7 @@ function About() {
               onResize={() => {}}
               placeholder={"message"}
               className={
-                "bg-body border-2 border-stroke block mt-2 w-full rounded-lg"
+                "bg-body border-2 border-stroke block mt-2 w-full rounded-lg bg-transparent"
               }
             />
           </div>
