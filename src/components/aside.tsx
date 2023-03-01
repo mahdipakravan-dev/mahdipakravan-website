@@ -145,7 +145,7 @@ export const Aside = () => {
   return (
     <aside
       className={buildClassNames(
-        "hidden md:block text-secondary-50",
+        "absolute top-0 z-10 bg-background md:bg-transparent w-screen md:relative md:block text-secondary-50",
         showBorder && "border border-transparent border-r-stroke md:w-64",
         isInHomeRoute && "md:w-1/6"
       )}

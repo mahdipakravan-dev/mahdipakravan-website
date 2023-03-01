@@ -62,7 +62,7 @@ export const Navbar = (props: Props) => {
       </nav>
       <div
         className={buildClassNames(
-          "z-10",
+          "z-20",
           navbarOpen
             ? "visible h-auto opacity-1 top-10"
             : "invisible h-0 opacity-0 -top-10",
