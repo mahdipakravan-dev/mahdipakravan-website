@@ -25,7 +25,9 @@ function About() {
 
   return (
     <div
-      className={"w-full h-full flex justify-between text-secondary-50 pb-20"}
+      className={
+        "w-full h-full md:flex justify-between text-secondary-50 pb-20"
+      }
     >
       <div className="w-3/6 grid items-center px-8 w-full pt-8">
         <form action="">

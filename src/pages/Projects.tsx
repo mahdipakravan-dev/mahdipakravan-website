@@ -28,7 +28,7 @@ export const Projects = (props: Props) => {
 
   console.log("Result : ", getProjectsAsync.result);
   return (
-    <div className={"projects-wrapper"}>
+    <div className={"grid grid-cols-1 md:grid-cols-2 grid-cols-3 gap-2"}>
       {getProjectsAsync.result?.map((project) => (
         <article className={"w-full p-2"}>
           <header className={"flex justify-start items-center"}>

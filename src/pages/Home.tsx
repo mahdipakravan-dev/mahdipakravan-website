@@ -32,7 +32,7 @@ function Home() {
   return (
     <div
       className={
-        "h-full text-secondary-300 flex flex-col justify-center items-start"
+        "h-full text-secondary-300 px-2 md:px-0 flex flex-col justify-center items-start"
       }
     >
       <span
