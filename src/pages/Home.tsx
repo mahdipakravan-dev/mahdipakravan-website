@@ -5,6 +5,7 @@ import { buildClassNames } from "../utils/css";
 import { useOnMountAnimation } from "../utils/hooks/useOnMountAnimation";
 import { useAudio } from "../hooks/useAudio";
 import { AudioType } from "../constants/types";
+import { TRACK_MUSIC_1 } from "../constants/tracks";
 
 const md = `
 //welcome to my portfolio website !
@@ -30,7 +31,7 @@ function Home() {
     onAnimationEnd: () => (mountedBefore = true),
   });
   useAudio({
-    playSrc: "/music.mp3",
+    playSrc: TRACK_MUSIC_1,
     audioType: AudioType.Music,
   });
   return (

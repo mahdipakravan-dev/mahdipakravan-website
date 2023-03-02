@@ -1,8 +1,12 @@
 import { createCallbackManager } from "../utils/callback";
 import { useEffect, useState } from "react";
-import { AudioStatusEnum, AudioType } from "../constants/types";
+import {
+  AudioCommandsEnum,
+  AudioStatusEnum,
+  AudioType,
+} from "../constants/types";
 
-const audioCallbackManager = createCallbackManager();
+export const audioCallbackManager = createCallbackManager();
 
 const audioInstance = new Audio();
 let effectsInstance: Array<HTMLAudioElement> = [];
@@ -64,6 +68,21 @@ export function useAudio({
 
   useEffect(() => {
     if (playOnMount) play();
+    audioCallbackManager.addCallback(
+      (src: string, command: AudioCommandsEnum) => {
+        if (src === playSrc) {
+          switch (command) {
+            case AudioCommandsEnum.Pause:
+              pause();
+              setStatus(AudioStatusEnum.Pause);
+              break;
+            case AudioCommandsEnum.Play:
+              play();
+              setStatus(AudioStatusEnum.Playing);
+          }
+        }
+      }
+    );
   }, []);
   //
   // useEffect(() => {

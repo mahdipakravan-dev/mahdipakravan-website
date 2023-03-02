@@ -9,6 +9,9 @@ import {
   ROUTE_HOME,
   ROUTE_PROJECTS,
 } from "../constants/routes";
+import { audioCallbackManager } from "../hooks/useAudio";
+import { TRACK_MUSIC_1 } from "../constants/tracks";
+import { AudioCommandsEnum } from "../constants/types";
 
 type Props = {};
 
@@ -57,6 +60,17 @@ export const Navbar = (props: Props) => {
               navbarOpen ? "ri-close-fill" : "ri-menu-fill"
             )}
             onClick={() => setNavbarOpen((prev) => !prev)}
+          />
+          <i
+            className={buildClassNames(
+              "cursor-pointer pr-2 ri-volume-mute-fill"
+            )}
+            onClick={() =>
+              audioCallbackManager.runCallbacks(
+                TRACK_MUSIC_1,
+                AudioCommandsEnum.Pause
+              )
+            }
           />
         </div>
       </nav>
