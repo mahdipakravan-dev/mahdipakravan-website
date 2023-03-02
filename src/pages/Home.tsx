@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./Home.css";
 import { Code } from "../components/code";
-import { useDelayUnmount } from "../utils/hooks/useDelayOnMount";
 import { buildClassNames } from "../utils/css";
 import { useOnMountAnimation } from "../utils/hooks/useOnMountAnimation";
+import { useAudio } from "../hooks/useAudio";
+import { AudioType } from "../constants/types";
 
 const md = `
 //welcome to my portfolio website !
@@ -28,7 +29,10 @@ function Home() {
     showAnimation: !mountedBefore,
     onAnimationEnd: () => (mountedBefore = true),
   });
-
+  useAudio({
+    playSrc: "/music.mp3",
+    audioType: AudioType.Music,
+  });
   return (
     <div
       className={

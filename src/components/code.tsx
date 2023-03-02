@@ -12,15 +12,15 @@ export const Code = ({ markdown, ...attr }: Props) => {
     hljs.highlightAll();
   });
 
+  console.log(attr.className);
   return (
-    <pre
-      {...attr}
-      className={buildClassNames(
-        ...(attr.className || ""),
-        "w-full max-w-screen"
-      )}
-    >
-      <code className="language-typescript rounded">{markdown}</code>
-    </pre>
+    <div className={"max-w-screen"}>
+      <pre
+        {...attr}
+        // className={buildClassNames(...(attr.className || ""), "max-w-screen")}
+      >
+        <code className="language-typescript rounded">{markdown}</code>
+      </pre>
+    </div>
   );
 };
