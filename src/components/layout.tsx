@@ -1,15 +1,11 @@
 import * as React from "react";
-import { PropsWithChildren, useState } from "react";
+import { PropsWithChildren } from "react";
 import { buildClassNames } from "../utils/css";
 import { Navbar } from "./navbar";
-import { IconLink, Link } from "./link";
 import "./layout.css";
-import { useLocation } from "react-router";
-import { ROUTE_ABOUT, ROUTE_HOME } from "../constants/routes";
-import { About_cases } from "../constants/cases";
-import { useSearchParams } from "react-router-dom";
 import { Aside } from "./aside";
 import { Footer } from "./footer";
+import { Modal } from "./modal";
 
 type Props = PropsWithChildren;
 
@@ -31,6 +27,7 @@ export const Layout = (props: Props) => {
         </main>
         <Footer />
       </div>
+      <Modal />
     </>
   );
 };

@@ -18,6 +18,7 @@ import {
 } from "./constants/routes";
 import { Projects } from "./pages/Projects";
 import Contact from "./pages/Contact";
+import { goToPopup } from "./components/modal";
 
 createRoot(document.getElementById("app")!).render(
   <BrowserRouter>
