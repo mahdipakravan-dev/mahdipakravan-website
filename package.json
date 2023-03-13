@@ -1,6 +1,6 @@
 {
-  "name": "example-react-router",
-  "version": "0.0.0",
+  "name": "MahdiPakravan",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "dev": "rimraf dev-dist && cross-env DEBUG=vite-plugin-pwa:* SW_DEV=true vite --force",
