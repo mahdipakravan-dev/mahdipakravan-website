@@ -1,13 +1,11 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { createRoot } from "react-dom/client";
 import "remixicon/fonts/remixicon.css";
 import "./assets/fonts/font.css";
 import "./index.css";
-import App from "./App";
-import Home from "./pages/Home";
 import { Layout } from "./components/layout";
-import About from "./pages/About";
+
 import {
   ROUTE_ABOUT,
   ROUTE_BLOG,
@@ -17,8 +15,11 @@ import {
   ROUTE_PROJECTS,
 } from "./constants/routes";
 import { Projects } from "./pages/Projects";
-import Contact from "./pages/Contact";
-import { goToPopup } from "./components/modal";
+
+const Contact = lazy(() => import("./pages/Contact"));
+const App = lazy(() => import("./App"));
+const Home = lazy(() => import("./pages/Home"));
+const About = lazy(() => import("./pages/About"));
 
 createRoot(document.getElementById("app")!).render(
   <BrowserRouter>
@@ -30,11 +31,51 @@ createRoot(document.getElementById("app")!).render(
             path={ROUTE_PREFIX}
             element={<Navigate to={ROUTE_HOME} replace />}
           />
-          <Route index path={ROUTE_HOME} element={<Home />} />
-          <Route index path={ROUTE_ABOUT} element={<About />} />
-          <Route index path={ROUTE_PROJECTS} element={<Projects />} />
-          <Route index path={ROUTE_BLOG} element={<About />} />
-          <Route index path={ROUTE_CONTACT} element={<Contact />} />
+          <Route
+            index
+            path={ROUTE_HOME}
+            element={
+              <Suspense fallback={<>...</>}>
+                <Home />
+              </Suspense>
+            }
+          />
+          <Route
+            index
+            path={ROUTE_ABOUT}
+            element={
+              <Suspense fallback={<>...</>}>
+                <About />
+              </Suspense>
+            }
+          />
+          <Route
+            index
+            path={ROUTE_PROJECTS}
+            element={
+              <Suspense fallback={<>...</>}>
+                <Projects />
+              </Suspense>
+            }
+          />
+          <Route
+            index
+            path={ROUTE_BLOG}
+            element={
+              <Suspense fallback={<>...</>}>
+                <About />
+              </Suspense>
+            }
+          />
+          <Route
+            index
+            path={ROUTE_CONTACT}
+            element={
+              <Suspense fallback={<>...</>}>
+                <Contact />
+              </Suspense>
+            }
+          />
         </Route>
       </Routes>
     </Layout>
