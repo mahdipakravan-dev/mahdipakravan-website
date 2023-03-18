@@ -29,7 +29,7 @@ export const Aside = () => {
 
   const Folder = ({ id, title, childs, isDir, isParent, isCheckBox }: Case) => {
     const [parentIsOpen, setParentIsOpen] = useState(true);
-    const [folderIsOpen, setFolderIsOpen] = useState(true);
+    const [folderIsOpen, setFolderIsOpen] = useState(false);
 
     const renderParent = (title: string) => {
       return (
@@ -94,9 +94,10 @@ export const Aside = () => {
             "flex items-between cursor-pointer",
             !isDir && "hover:shadow-md"
           )}
-          onClick={() => {
+          onClick={(e) => {
+            if (e.currentTarget !== e.target) return;
+            if (!isDir) return setSearchParams({ file: title });
             if (isDir) return setFolderIsOpen((p) => !p);
-            setSearchParams({ file: title });
           }}
         >
           {!isDir && (
