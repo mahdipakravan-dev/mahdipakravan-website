@@ -12,8 +12,7 @@ export const Modal = (props: Props) => {
     goToPopup = (modalName) => {
       setShowModal(true);
       setTimeout(async () => {
-        // const dynamicComponent = await import(`./modals/${modalName}`);
-        // console.log("Dynamic Component is ", dynamicComponent.default);
+        /* @vite-ignore */
         setComponent(lazy(() => import(`./modals/${modalName}`)));
       });
     };

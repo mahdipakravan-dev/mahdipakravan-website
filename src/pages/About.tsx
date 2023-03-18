@@ -1,29 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Home.css";
 import { Code } from "../components/code";
 import { useSearchParams } from "react-router-dom";
-import { Tweet } from "../components/tweet";
+import { callApi } from "../utils/api";
+import useAsync from "../utils/hooks/useAsync";
 
-const md = `/**
-  * About me
-  
-  * Born in 24.12.2000 , Tehran
-  * Married ♥
-  
-  * working status : Senior Frontend Developer at KianIranian S.T.D.G
-  
-  * <= see another detail in sidebar <=
-*/
-`;
 function About() {
   let [searchParams, setSearchParams] = useSearchParams();
+  const { run, result } = useAsync(
+    (fileName) => callApi("/api/about" + "?file=" + fileName, {}),
+    { defaultValue: "const need = 'wait...'" }
+  );
 
-  console.log(searchParams.get("name"));
+  useEffect(() => {
+    run(searchParams.get("file"));
+  }, [searchParams]);
 
   return (
     <div className={"w-full h-full lg:flex text-secondary-50 pb-20"}>
       <div className="px-8 pt-8 grid items-center">
-        <Code markdown={md} className={"w-full"} />
+        <Code markdown={result} className={"w-full"} />
       </div>
       {/*<div*/}
       {/*  className={*/}
