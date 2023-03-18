@@ -30,10 +30,10 @@ function Home() {
     showAnimation: !mountedBefore,
     onAnimationEnd: () => (mountedBefore = true),
   });
-  useAudio({
-    playSrc: TRACK_MUSIC_1,
-    audioType: AudioType.Music,
-  });
+  // useAudio({
+  //   playSrc: TRACK_MUSIC_1,
+  //   audioType: AudioType.Music,
+  // });
   return (
     <div
       className={
