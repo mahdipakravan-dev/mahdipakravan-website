@@ -1,17 +1,13 @@
 import * as React from "react";
 import { useState } from "react";
 import { buildClassNames } from "../utils/css";
-import { useNavigate, RouteMatch, useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import {
   ROUTE_ABOUT,
-  ROUTE_BLOG,
   ROUTE_CONTACT,
   ROUTE_HOME,
   ROUTE_PROJECTS,
 } from "../constants/routes";
-import { audioCallbackManager } from "../hooks/useAudio";
-import { TRACK_MUSIC_1 } from "../constants/tracks";
-import { AudioCommandsEnum } from "../constants/types";
 
 type Props = {};
 
@@ -60,17 +56,6 @@ export const Navbar = (props: Props) => {
               navbarOpen ? "ri-close-fill" : "ri-menu-fill"
             )}
             onClick={() => setNavbarOpen((prev) => !prev)}
-          />
-          <i
-            className={buildClassNames(
-              "cursor-pointer pr-2 ri-volume-mute-fill"
-            )}
-            onClick={() =>
-              audioCallbackManager.runCallbacks(
-                TRACK_MUSIC_1,
-                AudioCommandsEnum.Pause
-              )
-            }
           />
         </div>
       </nav>

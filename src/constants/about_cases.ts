@@ -6,18 +6,71 @@ export const About_cases: Case = {
   childs: [
     {
       id: "S_2",
-      title: "Projects",
-      isDir: true,
-      childs: [],
-    },
-    {
-      id: "S_6",
-      title: "Action",
+      title: "Work experience",
       isDir: true,
       childs: [
         {
-          id: "S_7",
-          title: "Max Paine 33",
+          id: "S_2_4",
+          title: "Kian Iranian (iGap)",
+          childs: [],
+        },
+        {
+          id: "S_2_3",
+          title: "Parax",
+          childs: [],
+        },
+        {
+          id: "S_2_2",
+          title: "Mine Taxi",
+          childs: [],
+        },
+        {
+          id: "S_2_1",
+          title: "Tavanasho",
+          childs: [],
+        },
+        {
+          id: "S_2_0",
+          title: "Techno Ettesal",
+          childs: [],
+        },
+      ],
+    },
+    {
+      id: "S_3",
+      title: "Hobbies",
+      isDir: true,
+      childs: [
+        {
+          id: "S_3_3",
+          title: "Motorcycle",
+          isDir: false,
+        },
+        {
+          id: "S_3_2",
+          title: "VideoGame",
+          isDir: false,
+        },
+        {
+          id: "S_3_1",
+          title: "Soccer",
+          isDir: false,
+        },
+      ],
+    },
+    {
+      id: "S_3",
+      title: "Achievements",
+      isDir: true,
+      childs: [
+        {
+          id: "S_3_2",
+          title: "Youngest mentor of Startup",
+          isDir: false,
+        },
+        {
+          id: "S_3_1",
+          title: "Winner of IT Olympiad",
           isDir: false,
         },
       ],

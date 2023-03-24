@@ -1,8 +1,9 @@
-import { defineConfig } from "vite";
+import { ConfigEnv, defineConfig, UserConfig } from "vite";
 import reactRefresh from "@vitejs/plugin-react-refresh";
 import type { ManifestOptions, VitePWAOptions } from "vite-plugin-pwa";
 import { VitePWA } from "vite-plugin-pwa";
 import replace from "@rollup/plugin-replace";
+import viteCompression from "vite-plugin-compression";
 
 const pwaOptions: Partial<VitePWAOptions> = {
   mode: "development",
@@ -64,15 +65,22 @@ if (reload) {
 }
 
 if (selfDestroying) pwaOptions.selfDestroying = selfDestroying;
+export default ({ command, mode }: ConfigEnv): UserConfig => {
+  const root = process.cwd();
 
-export default defineConfig({
-  // base: process.env.BASE_URL || 'https://github.com/',
-  build: {
-    sourcemap: process.env.SOURCE_MAP === "true",
-  },
-  plugins: [
-    reactRefresh(),
-    VitePWA(pwaOptions),
-    replace(replaceOptions) as any,
-  ],
-});
+  return {
+    base: process.env.BASE_URL || "https://github.com/",
+    build: {
+      sourcemap: process.env.SOURCE_MAP === "true",
+    },
+    plugins: [
+      reactRefresh(),
+      VitePWA(pwaOptions),
+      replace(replaceOptions) as any,
+      viteCompression(),
+    ],
+  };
+};
+// export default defineConfig({
+
+// });

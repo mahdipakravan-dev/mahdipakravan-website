@@ -12,19 +12,30 @@ export function callApi<T = any>(
     const headers = {
       ...payload.headers,
     };
-    return axios({
-      url,
-      ...payload,
-      ...headers,
-    })
-      .then((res) => {
-        if (!res.data) return reject("Response Payload is not acceptable");
-        return resolve(res.data as T);
-      })
-      .catch((err) => {
-        if (!err.response?.data)
-          return reject("Response Payload is not acceptable");
-        return reject(err.response.data);
+    caches.open("MAHDI_CACHE").then(function (cache) {
+      cache.match(url).then(function (response) {
+        if (response) {
+          response.text().then(function (data) {
+            resolve(data as T);
+          });
+        } else {
+          axios({
+            url,
+            ...payload,
+            ...headers,
+          })
+            .then((res) => {
+              if (!res.data)
+                return reject("Response Payload is not acceptable");
+              return resolve(res.data as T);
+            })
+            .catch((err) => {
+              if (!err.response?.data)
+                return reject("Response Payload is not acceptable");
+              return reject(err.response.data);
+            });
+        }
       });
+    });
   });
 }
