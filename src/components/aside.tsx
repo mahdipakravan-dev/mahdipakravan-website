@@ -5,15 +5,31 @@ import { buildClassNames } from "../utils/css";
 import { About_cases } from "../constants/about_cases";
 import { Projects_cases } from "../constants/projects_cases";
 import { Folder } from "./folder";
+import { useSearchParams } from "react-router-dom";
 
 export const Aside = () => {
   const { pathname } = useLocation();
+  let [searchParams, setSearchParams] = useSearchParams();
 
   const showBorder = pathname !== ROUTE_HOME;
 
   const isInAboutRoute = pathname.includes(ROUTE_ABOUT);
   const isInHomeRoute = pathname.includes(ROUTE_HOME);
   const isInProjectsRoute = pathname.includes(ROUTE_PROJECTS);
+
+  const onClickCheckbox = (id: string) => {
+    let currentStacks = searchParams.get("stacks")?.split(",") || [];
+    if (currentStacks.includes(id)) {
+      currentStacks = currentStacks.filter((stack) => stack !== id);
+    } else {
+      currentStacks.push(id);
+    }
+    if (!currentStacks.length) searchParams.delete("stacks");
+    else searchParams.set("stacks", currentStacks.join(","));
+    setSearchParams(searchParams);
+  };
+
+  const onClickFile = (file: string) => setSearchParams({ file });
 
   return (
     <aside
@@ -23,8 +39,12 @@ export const Aside = () => {
         isInHomeRoute && "md:w-1/6"
       )}
     >
-      <>{isInAboutRoute && <Folder {...About_cases} />}</>
-      <>{isInProjectsRoute && <Folder {...Projects_cases} />}</>
+      <>{isInAboutRoute && <Folder onClick={onClickFile} {...About_cases} />}</>
+      <>
+        {isInProjectsRoute && (
+          <Folder onClick={onClickCheckbox} {...Projects_cases} />
+        )}
+      </>
       {/*  @TODO Implement file structure*/}
     </aside>
   );

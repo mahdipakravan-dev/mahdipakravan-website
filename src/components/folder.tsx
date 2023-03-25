@@ -15,10 +15,17 @@ const renderArrow = (isOpen: boolean) => {
 };
 
 export const Folder = memo(
-  ({ id, title, childs, isDir, isParent, isCheckBox }: Case) => {
+  ({
+    id,
+    title,
+    childs,
+    isDir,
+    isParent,
+    isCheckBox,
+    onClick,
+  }: Case & { onClick: (id: string) => void }) => {
     const [parentIsOpen, setParentIsOpen] = useState(true);
     const [folderIsOpen, setFolderIsOpen] = useState(false);
-    let [searchParams, setSearchParams] = useSearchParams();
 
     const renderParent = (title: string) => {
       return (
@@ -47,31 +54,19 @@ export const Folder = memo(
         />
       );
 
-      const onClickCheckbox = () => {
-        let currentStacks = searchParams.get("stacks")?.split(",") || [];
-        if (currentStacks.includes(title)) {
-          currentStacks = currentStacks.filter((stack) => stack !== title);
-        } else {
-          currentStacks.push(title);
-        }
-        if (!currentStacks.length) searchParams.delete("stacks");
-        else searchParams.set("stacks", currentStacks.join(","));
-        setSearchParams(searchParams);
-      };
-
       if (isCheckBox)
         return (
           <div
             className="flex items-center justify-center mt-2"
-            onClick={onClickCheckbox}
+            onClick={() => onClick(id)}
           >
             {getIcon}
             <label className="container">
               {title}
               <input
                 type="checkbox"
-                onChange={onClickCheckbox}
-                checked={searchParams.get("stacks")?.includes(title)}
+                onChange={() => onClick(id)}
+                // checked={searchParams.get("stacks")?.includes(title)}
               />
               <span className="checkmark" />
             </label>
@@ -85,8 +80,8 @@ export const Folder = memo(
           )}
           onClick={(e) => {
             if (e.currentTarget !== e.target) return;
-            if (isCheckBox) return setSearchParams({ file: title });
             if (isDir) return setFolderIsOpen((p) => !p);
+            onClick(title);
           }}
         >
           {!isDir && (
@@ -123,6 +118,7 @@ export const Folder = memo(
               childs.map((cases) => (
                 <Folder
                   key={`case__${cases.id}__${Math.random()}`}
+                  onClick={onClick}
                   {...cases}
                 />
               ))}
@@ -130,5 +126,6 @@ export const Folder = memo(
         </>
       </div>
     );
-  }
+  },
+  () => true
 );
