@@ -11,7 +11,17 @@ export const About_cases: Case = {
       childs: [
         {
           id: "S_2_4",
-          title: "Kian Iranian (iGap)",
+          title: "KianIranian_iGap",
+          childs: [],
+        },
+        {
+          id: "S_2_4",
+          title: "Baran",
+          childs: [],
+        },
+        {
+          id: "S_2_4",
+          title: "Marcato",
           childs: [],
         },
         {
@@ -21,17 +31,12 @@ export const About_cases: Case = {
         },
         {
           id: "S_2_2",
-          title: "Mine Taxi",
+          title: "MineTaxi",
           childs: [],
         },
         {
           id: "S_2_1",
           title: "Tavanasho",
-          childs: [],
-        },
-        {
-          id: "S_2_0",
-          title: "Techno Ettesal",
           childs: [],
         },
       ],
