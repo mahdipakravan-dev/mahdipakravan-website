@@ -152,6 +152,13 @@ const detail = {
     using Html , css , jquery for implement Frontend .
 */          
 `,
+      gallery: [
+        {
+          src: "https://www.kianiranian.com/images/logo-kian.png",
+          desc: "",
+          title: "Kian Iranian Logo",
+        },
+      ],
     },
   },
 ];

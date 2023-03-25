@@ -9,7 +9,11 @@ import {
   ROUTE_PROJECTS,
 } from "../constants/routes";
 
-type Props = {};
+type Props = {
+  navbarItems?: Array<{ title: string; route: string; selected?: boolean }>;
+  showTitle?: boolean;
+  showMenu?: boolean;
+};
 
 const defaultNavItems = [
   { title: "_home", route: ROUTE_HOME },
@@ -18,7 +22,11 @@ const defaultNavItems = [
   { title: "_contact", route: ROUTE_CONTACT },
 ];
 
-export const Navbar = (props: Props) => {
+export const Navbar = ({
+  showTitle = true,
+  showMenu = true,
+  navbarItems = defaultNavItems,
+}: Props) => {
   const [navbarOpen, setNavbarOpen] = useState(false);
   const navigate = useNavigate();
   const { pathname } = useLocation();
@@ -31,25 +39,31 @@ export const Navbar = (props: Props) => {
           "w-full flex justify-between sticky top-0 text-secondary-50 leading-10 border border-transparent border-b-stroke"
         }
       >
-        <span className={"min-w-min lg:w-1/6 pl-2"}>mahdi-pakravan</span>
+        {showTitle && (
+          <span className={"min-w-min lg:w-1/6 pl-2"}>mahdi-pakravan</span>
+        )}
 
         <ul
           className={
             "hidden lg:flex w-4/6 flex justify-start items-center h-full z-10"
           }
         >
-          {defaultNavItems?.map(({ title, route }) => (
+          {navbarItems?.map(({ title, route, selected }) => (
             <NavbarItem
               key={`nav__${route}`}
               onClick={() => navigate(route)}
-              isActive={pathname.includes(route)}
+              isActive={selected || pathname.includes(route)}
               route={route}
               title={title}
             />
           ))}
         </ul>
 
-        <div className={"flex justify-end items-center w-20 sm:w-1/6"}>
+        <div
+          className={
+            "flex justify-end items-center w-20 sm:w-1/6 visible md:invisible"
+          }
+        >
           <i
             className={buildClassNames(
               "cursor-pointer pr-2 ",
@@ -70,14 +84,14 @@ export const Navbar = (props: Props) => {
           "border border-transparent border-t-stroke"
         )}
       >
-        {defaultNavItems?.map(({ title, route }) => (
+        {navbarItems?.map(({ title, route, selected }) => (
           <MobileNavbarItem
             key={`nav__${route}`}
             onClick={() => {
               setNavbarOpen(false);
               navigate(route);
             }}
-            isActive={pathname.includes(route)}
+            isActive={selected || pathname.includes(route)}
             route={route}
             title={title}
           />
