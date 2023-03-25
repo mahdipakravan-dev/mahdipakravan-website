@@ -1,7 +1,8 @@
 export default [
   {
     url: "/api/about",
-    md: `
+    object: {
+      md: `
 /**
 * About me
   
@@ -13,15 +14,19 @@ export default [
   * <= see another detail in sidebar <=
 */
         `,
+    },
   },
   {
     url: "/api/about?file=KianIranian_iGap",
-    md: `
-/*KianIranian STDG (smart technology development group)*/
+    object: {
+      md: `
+/* KianIranian STDG 
+   (smart technology development group)
+ */
     
 const detail = {
     startDate : "Jan2021",
-    endDate : "Now!",
+    //(currently working here)
     location : "Tehran,Iran",
     jobType : "Full-Time",
     position : "Frontend TeamLead"
@@ -33,10 +38,12 @@ const detail = {
     ReactJs , Redux , Nextjs , Pwa , SocketIO , Protocol Buffer , WebRTC , Hls And Dash Video Streaming in Frontend development
 */          
 `,
+    },
   },
   {
     url: "/api/about?file=Baran",
-    md: `
+    object: {
+      md: `
 /*Baran Cloud Company (IBARB)*/
     
 const detail = {
@@ -56,10 +63,12 @@ const detail = {
     using ServerSideAdInsertion and implement ads on Player .
 */          
 `,
+    },
   },
   {
     url: "/api/about?file=Marcato",
-    md: `
+    object: {
+      md: `
 /*Marcato (music store)*/
     
 const detail = {
@@ -76,10 +85,12 @@ const detail = {
     Nodejs , Typescript , Mongodb , Redis , Ejs
 */          
 `,
+    },
   },
   {
     url: "/api/about?file=Parax",
-    md: `
+    object: {
+      md: `
 /*Parax Company*/
     
 const detail = {
@@ -95,10 +106,12 @@ const detail = {
     Implement WebRTC Technologies For Online Video Call Projects
 */          
 `,
+    },
   },
   {
     url: "/api/about?file=MineTaxi",
-    md: `
+    object: {
+      md: `
 /*MineTaxi Company (maham iranian yekta nafis)*/
     
 const detail = {
@@ -118,10 +131,12 @@ const detail = {
     Server : Linux - Windows
 */          
 `,
+    },
   },
   {
     url: "/api/about?file=Tavanasho",
-    md: `
+    object: {
+      md: `
 /*Tavanasho education platform*/
     
 const detail = {
@@ -137,5 +152,6 @@ const detail = {
     using Html , css , jquery for implement Frontend .
 */          
 `,
+    },
   },
 ];

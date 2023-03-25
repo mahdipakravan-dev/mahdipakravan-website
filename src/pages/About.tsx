@@ -8,18 +8,26 @@ import useAsync from "../utils/hooks/useAsync";
 function About() {
   let [searchParams, setSearchParams] = useSearchParams();
   const { run, result } = useAsync(
-    (fileName) => callApi("/api/about" + "?file=" + fileName, {}),
+    (fileName) =>
+      callApi("/api/about" + "?file=" + fileName, {})
+        .then(JSON.parse)
+        .catch((err) => {
+          console.log("RESPONSED ", JSON.parse(err));
+          return "";
+        }),
     { defaultValue: "const need = 'wait...'" }
   );
 
+  console.log(result);
   useEffect(() => {
     run(searchParams.get("file"));
   }, [searchParams]);
 
   return (
     <div className={"w-full h-full lg:flex text-secondary-50 pb-20"}>
-      <div className="px-8 pt-8 grid items-center">
-        <Code markdown={result} className={"w-full"} />
+      <div className="pt-8 pl-4">
+        <h5 className={"text-lg font-bold pb-8"}>{searchParams.get("file")}</h5>
+        <Code markdown={result.md} className={"w-full"} />
       </div>
       {/*<div*/}
       {/*  className={*/}

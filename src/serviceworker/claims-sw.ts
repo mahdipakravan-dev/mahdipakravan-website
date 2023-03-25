@@ -30,7 +30,7 @@ const cacheName = "MAHDI_CACHE";
 
 const mockedResponses = responses.map((res) => ({
   url: res.url,
-  response: new Response(res.md, {
+  response: new Response(JSON.stringify(res.object), {
     headers: { "Content-Type": "text/plain" },
   }),
 }));
