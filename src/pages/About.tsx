@@ -6,6 +6,7 @@ import { callApi } from "../utils/api";
 import useAsync from "../utils/hooks/useAsync";
 import { Navbar } from "../components/navbar";
 import { ROUTE_HOME } from "../constants/routes";
+import { Carousel } from "./slider";
 
 function About() {
   let [searchParams, setSearchParams] = useSearchParams();
@@ -39,10 +40,16 @@ function About() {
       </div>
       <div
         className={
-          "absolute z-2 bg-background right-1 top-0 shadow-sm rounded-md w-[30vw] h-[90vh] border border-transparent border-l-stroke"
+          "absolute z-2 bg-background right-0 top-0 shadow-sm rounded-md w-full md:w-[30vw] h-[90vh] border border-transparent border-l-stroke"
         }
       >
         <Navbar showTitle={false} navbarItems={navItems} />
+
+        <div className={"w-full flex flex-col justify-start pt-8 items-center"}>
+          <img src="https://www.kianiranian.com/images/logo-kian.png" alt="" />
+
+          <Carousel />
+        </div>
       </div>
       {/*<div*/}
       {/*  className={*/}
