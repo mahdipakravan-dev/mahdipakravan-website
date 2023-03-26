@@ -3,7 +3,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import "./slider.css";
 
 export const Carousel = () => {
-  const [ref] = useEmblaCarousel();
+  const [ref, carouselApi] = useEmblaCarousel();
 
   return (
     <div className="embla" ref={ref}>
@@ -13,10 +13,7 @@ export const Carousel = () => {
             className="embla__slide"
             key={`${Math.random()}__${Math.random()}`}
           >
-            <img
-              src="https://avatars.githubusercontent.com/u/56352067?v=4"
-              alt=""
-            />
+            <img src="/image-test.jpg" alt="" />
             {/*<div className="embla__shadow" />*/}
           </div>
         ))}
@@ -28,6 +25,14 @@ export const Carousel = () => {
         <p className={"block font-regular"}>
           my team was have 8 member and we was verry khfafan
         </p>
+      </div>
+      <div className="embla__arrow">
+        <div className="left" onClick={() => carouselApi?.scrollNext()}>
+          <i className="ri-arrow-left-line cursor-pointer" />
+        </div>
+        <div className="right" onClick={() => carouselApi?.scrollNext()}>
+          <i className="ri-arrow-right-line cursor-pointer" />
+        </div>
       </div>
     </div>
   );
