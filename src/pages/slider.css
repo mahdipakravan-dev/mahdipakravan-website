@@ -18,7 +18,7 @@
 
 .embla__slide img{
     object-fit: cover;
-    height: 600px;
+    height: 80vh;
     width: 100%;
     opacity: .7;
     z-index: 1;
@@ -26,13 +26,13 @@
     position: relative;
 }
 
-.embla__slide:before {
+.shadow:before {
     content: " ";
     position: absolute;
     height: 100%;
     z-index: 2;
     width: 200vw;
-    box-shadow: inset 3px 3px 40px 0 #011627;
+    box-shadow: inset 8px 8px 30px 0 #011627;
     top: 0;
     left: 0;
 }
@@ -41,14 +41,11 @@
     @apply shadow-lg;
     position: absolute;
     padding: 10px;
+    height: 130px;
     bottom: 0;
     left: 0;
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-radius: 10px;
     background: rgba(0,0,0,.8);
 }
 
@@ -66,4 +63,31 @@
     justify-content: space-between;
     align-items: center;
     padding: 0 5px;
+}
+
+.embla__progress {
+    width: 100%;
+    height: 10px;
+    position: absolute;
+    top: 44px;
+    left: 0;
+    z-index: 3;
+}
+
+@keyframes progress {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+.embla__progress .filled {
+    animation: progress 5s infinite;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    opacity: .4;
+    border-radius: 0  0 10px 10px;
 }

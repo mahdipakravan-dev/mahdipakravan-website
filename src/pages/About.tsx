@@ -44,12 +44,14 @@ function About() {
           "absolute z-2 bg-background right-0 top-0 shadow-sm rounded-md w-full md:w-[50vw] lg:w-[30vw] h-[90vh] border border-transparent border-l-stroke invisible md:visible"
         }
       >
-        <Navbar showTitle={false} navbarItems={navItems} />
+        <div className="shadow">
+          <Navbar showTitle={false} navbarItems={navItems} />
 
-        <div className={"w-full flex flex-col justify-start items-center"}>
-          {/*<img src="https://www.kianiranian.com/images/logo-kian.png" alt="" />*/}
+          <div className={"w-full flex flex-col justify-start items-center"}>
+            {/*<img src="https://www.kianiranian.com/images/logo-kian.png" alt="" />*/}
 
-          <Carousel gallery={result.gallery || []} />
+            <Carousel gallery={result.gallery || []} />
+          </div>
         </div>
       </div>
       {/*<div*/}

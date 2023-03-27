@@ -48,11 +48,17 @@ const detail = {
         {
           id: 2,
           src: "/kian/3.jpeg",
-          title: "we was 6 frontend-developer !",
-          desc: "we was 6 frontend-developer !",
+          title: "Frontend Team (2020)",
+          desc: "4 frontend-developer !",
         },
         {
           id: 3,
+          src: "/kian/4.jpeg",
+          title: "Frontend Team (2021)",
+          desc: "6 frontend-developer !",
+        },
+        {
+          id: 4,
           src: "/kian/2.jpg",
           title: "celebrated 4 year of kian iranian",
           desc: "we was 6 frontend-developer !",
