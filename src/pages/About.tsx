@@ -40,13 +40,13 @@ function About() {
       </div>
       <div
         className={
-          "absolute z-2 bg-background right-0 top-0 shadow-sm rounded-md w-full md:w-[30vw] h-[90vh] border border-transparent border-l-stroke"
+          "absolute z-2 bg-background right-0 top-0 shadow-sm rounded-md w-full md:w-[50vw] lg:w-[30vw] h-[90vh] border border-transparent border-l-stroke invisible md:visible"
         }
       >
         <Navbar showTitle={false} navbarItems={navItems} />
 
-        <div className={"w-full flex flex-col justify-start pt-8 items-center"}>
-          <img src="https://www.kianiranian.com/images/logo-kian.png" alt="" />
+        <div className={"w-full flex flex-col justify-start items-center"}>
+          {/*<img src="https://www.kianiranian.com/images/logo-kian.png" alt="" />*/}
 
           <Carousel />
         </div>
