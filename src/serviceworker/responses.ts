@@ -89,6 +89,14 @@ const detail = {
     using ServerSideAdInsertion and implement ads on Player .
 */          
 `,
+      gallery: [
+        {
+          id: 1,
+          src: "/baran/1.jpeg",
+          title: "Frontend Team (2020)",
+          desc: "we was 3 member in frontend team , we developed a VOD platform named iGapTV(VIDOLIM) , this project available in _projects tab !",
+        },
+      ],
     },
   },
   {
@@ -111,6 +119,20 @@ const detail = {
     Nodejs , Typescript , Mongodb , Redis , Ejs
 */          
 `,
+      gallery: [
+        {
+          id: 1,
+          src: "/marcato/1.jpg",
+          title: "This is Amir !",
+          desc: "i and amir , we decied to create a music store named marcato ! , we developed this startup with Node.js !",
+        },
+        {
+          id: 2,
+          src: "/marcato/2.jpeg",
+          title: "our office , ParadiseHUB !",
+          desc: "we developed this startup in weekend at a co-working space named paradiseHUB",
+        },
+      ],
     },
   },
   {
@@ -132,6 +154,14 @@ const detail = {
     Implement WebRTC Technologies For Online Video Call Projects
 */          
 `,
+      gallery: [
+        {
+          id: 1,
+          src: "/parax/1.jpg",
+          title: "Our Team (Backend Team)",
+          desc: "I was the only nodejs-developer in this team , The rest of the guys, Mehdi, Maryam and Saman, are Laravel developers",
+        },
+      ],
     },
   },
   {
@@ -157,6 +187,14 @@ const detail = {
     Server : Linux - Windows
 */          
 `,
+      gallery: [
+        {
+          id: 1,
+          src: "/mine/1.jpeg",
+          title: "i was only Node.js Developer",
+          desc: "I worked for one year as the only developer in this company and implemented the backend of a taxi request application in this company.",
+        },
+      ],
     },
   },
   {

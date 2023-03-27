@@ -12,7 +12,7 @@ export const Carousel = memo(
   (props: Props) => {
     const byKey = keyBy(props.gallery, "id");
     const [ref, carouselApi] = useEmblaCarousel({ loop: false }, [
-      Autoplay({ delay: 5000 }),
+      Autoplay({ delay: 8000 }),
     ]);
     const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -38,7 +38,7 @@ export const Carousel = memo(
         </div>
 
         <div className="embla__content">
-          <span className="inline-block font-semibold text-md">
+          <span className="inline-block font-semibold text-lg">
             {byKey[currentSlide + 1]?.title}
           </span>
           <br />
@@ -47,9 +47,11 @@ export const Carousel = memo(
           </p>
         </div>
 
-        <div className="embla__progress">
-          <div className="filled" />
-        </div>
+        {props.gallery.length > 1 && (
+          <div className="embla__progress">
+            <div className="filled" />
+          </div>
+        )}
       </div>
     );
   },

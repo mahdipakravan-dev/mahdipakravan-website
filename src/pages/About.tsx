@@ -48,8 +48,6 @@ function About() {
           <Navbar showTitle={false} navbarItems={navItems} />
 
           <div className={"w-full flex flex-col justify-start items-center"}>
-            {/*<img src="https://www.kianiranian.com/images/logo-kian.png" alt="" />*/}
-
             <Carousel gallery={result.gallery || []} />
           </div>
         </div>

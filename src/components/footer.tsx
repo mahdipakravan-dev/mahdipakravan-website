@@ -5,7 +5,7 @@ export const Footer = () => {
   return (
     <footer
       className={
-        "sticky bottom-0 bg-background md:bg-transparent border border-transparent border-t-stroke text-secondary-50 leading-7 px-2 flex justify-between items-center"
+        "sticky bottom-0 bg-background md:bg-transparent border border-transparent border-t-stroke text-secondary-50 leading-7 px-2 flex justify-between items-center z-4"
       }
     >
       <div>
