@@ -12,7 +12,7 @@ function About() {
   let [searchParams, setSearchParams] = useSearchParams();
   const navItems = [
     {
-      title: `${searchParams.get("file")}_images`,
+      title: `_stories`,
       route: ROUTE_HOME,
       selected: true,
     },
@@ -33,6 +33,7 @@ function About() {
     run(searchParams.get("file"));
   }, [searchParams]);
 
+  console.log(result);
   return (
     <div className={"w-full h-full lg:flex text-secondary-50 pb-20"}>
       <div className="pt-8 pl-4">
@@ -48,7 +49,7 @@ function About() {
         <div className={"w-full flex flex-col justify-start items-center"}>
           {/*<img src="https://www.kianiranian.com/images/logo-kian.png" alt="" />*/}
 
-          <Carousel />
+          <Carousel gallery={result.gallery || []} />
         </div>
       </div>
       {/*<div*/}

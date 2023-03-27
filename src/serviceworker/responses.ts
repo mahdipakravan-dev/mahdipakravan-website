@@ -38,6 +38,26 @@ const detail = {
     ReactJs , Redux , Nextjs , Pwa , SocketIO , Protocol Buffer , WebRTC , Hls And Dash Video Streaming in Frontend development
 */          
 `,
+      gallery: [
+        {
+          id: 1,
+          src: "/kian/1.jpg",
+          title: "i was developed iGapMessenger Web!",
+          desc: "here is the birthday of 6th year of iGap",
+        },
+        {
+          id: 2,
+          src: "/kian/3.jpeg",
+          title: "we was 6 frontend-developer !",
+          desc: "we was 6 frontend-developer !",
+        },
+        {
+          id: 3,
+          src: "/kian/2.jpg",
+          title: "celebrated 4 year of kian iranian",
+          desc: "we was 6 frontend-developer !",
+        },
+      ],
     },
   },
   {
@@ -154,9 +174,19 @@ const detail = {
 `,
       gallery: [
         {
-          src: "https://www.kianiranian.com/images/logo-kian.png",
-          desc: "",
-          title: "Kian Iranian Logo",
+          src: "/kian/1.jpg",
+          title: "i was developed iGapMessenger Web!",
+          desc: "here is the birthday of 6th year of iGap",
+        },
+        {
+          src: "/kian/3.jpg",
+          title: "we was 6 frontend-developer !",
+          desc: "we was 6 frontend-developer !",
+        },
+        {
+          src: "/kian/2.jpg",
+          title: "celebrated 4 year of kian iranian",
+          desc: "we was 6 frontend-developer !",
         },
       ],
     },
