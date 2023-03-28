@@ -41,12 +41,23 @@ function About() {
       </div>
       <div
         className={
-          "absolute z-2 bg-background right-0 top-0 shadow-sm rounded-md w-full md:w-[50vw] lg:w-[30vw] h-[90vh] border border-transparent border-l-stroke invisible md:visible"
+          "absolute z-2 bg-background right-0 top-0 shadow-sm rounded-md w-full md:w-[50vw] lg:w-[30vw] h-[93vh] border border-transparent border-l-stroke invisible md:visible"
         }
       >
+        <nav
+          className={
+            "w-full flex justify-between sticky top-0 text-secondary-50 leading-10 border border-transparent border-b-stroke"
+          }
+        >
+          <span
+            className={
+              "transition-all duration-100 ease-in-out delay-75 border border-transparent border-r-stroke border-r-stroke px-4 cursor-pointer hover:bg-primary-200 border-b-accent-50 border-b-2"
+            }
+          >
+            _stories
+          </span>
+        </nav>
         <div className="shadow">
-          <Navbar showTitle={false} navbarItems={navItems} />
-
           <div className={"w-full flex flex-col justify-start items-center"}>
             <Carousel gallery={result.gallery || []} />
           </div>

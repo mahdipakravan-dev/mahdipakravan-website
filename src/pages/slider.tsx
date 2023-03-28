@@ -4,6 +4,7 @@ import Autoplay from "embla-carousel-autoplay";
 
 import "./slider.css";
 import { keyBy } from "../utils/array";
+import { buildClassNames } from "../utils/css";
 
 type Props = {
   gallery: Array<{ src: string; title: string; desc?: string; id: number }>;
@@ -12,7 +13,7 @@ export const Carousel = memo(
   (props: Props) => {
     const byKey = keyBy(props.gallery, "id");
     const [ref, carouselApi] = useEmblaCarousel({ loop: false }, [
-      Autoplay({ delay: 8000 }),
+      Autoplay({ delay: 4000 }),
     ]);
     const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -47,11 +48,26 @@ export const Carousel = memo(
           </p>
         </div>
 
-        {props.gallery.length > 1 && (
-          <div className="embla__progress">
-            <div className="filled" />
+        <div className="embla__arrow">
+          <div
+            className={buildClassNames(
+              currentSlide !== 0 ? "visible" : "invisible"
+            )}
+            onClick={() => carouselApi?.scrollPrev()}
+          >
+            <i className="ri-arrow-left-line cursor-pointer" />
           </div>
-        )}
+          <div
+            className={buildClassNames(
+              currentSlide !== props.gallery.length - 1
+                ? "visible"
+                : "invisible"
+            )}
+            onClick={() => carouselApi?.scrollNext()}
+          >
+            <i className="ri-arrow-right-line cursor-pointer" />
+          </div>
+        </div>
       </div>
     );
   },

@@ -1,6 +1,6 @@
 export default [
   {
-    url: "/api/about",
+    url: "/api/about?file=null",
     object: {
       md: `
 /**
@@ -14,6 +14,20 @@ export default [
   * <= see another detail in sidebar <=
 */
         `,
+      gallery: [
+        {
+          id: 1,
+          src: "/self/2.jpeg",
+          title: "I started as a child :)",
+          desc: "My father is a teacher and he is one of the first people in our family who got acquainted with school computer systems. I grew up with computers since I was a child.",
+        },
+        {
+          id: 2,
+          src: "/self/1.jpg",
+          title: "Start coding at 14",
+          desc: "I started programming with C# when I was 14 years old , i created some software available at mahdisoft.blog.ir",
+        },
+      ],
     },
   },
   {
