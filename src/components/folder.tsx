@@ -58,15 +58,15 @@ export const Folder = memo(
         return (
           <div
             className="flex items-center justify-center mt-2"
-            onClick={() => onClick(id)}
+            onClick={() => onClick(title)}
           >
             {getIcon}
             <label className="container">
               {title}
               <input
                 type="checkbox"
-                onChange={() => onClick(id)}
-                // checked={searchParams.get("stacks")?.includes(title)}
+                onChange={() => onClick(title)}
+                checked={searchParams.get("stacks")?.includes(title)}
               />
               <span className="checkmark" />
             </label>
