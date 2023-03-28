@@ -50,6 +50,7 @@
     "embla-carousel-react": "^7.1.0",
     "highlight.js": "^11.7.0",
     "react": "^18.2.0",
+    "react-animated-text-content": "^1.0.1",
     "react-dom": "^18.2.0",
     "react-highlight": "^0.15.0",
     "react-router": "^6.4.5",
