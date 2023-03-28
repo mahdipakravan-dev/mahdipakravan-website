@@ -49,7 +49,7 @@ export const Carousel = memo(
         </div>
 
         {props.gallery.length > 1 && (
-          <div className="embla__arrow">
+          <div className="embla__arrow invisible md:visible">
             <div
               className={buildClassNames(
                 currentSlide !== 0 ? "visible" : "invisible"

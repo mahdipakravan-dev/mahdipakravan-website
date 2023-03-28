@@ -34,7 +34,6 @@ export const Folder = memo(
             "flex justify-start items-center cursor-pointer border border-t-transparent border-stroke pl-2 py-1"
           }
           onClick={() => {
-            alert("Arrow");
             setParentIsOpen((p) => !p);
           }}
         >

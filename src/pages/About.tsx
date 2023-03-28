@@ -7,6 +7,7 @@ import useAsync from "../utils/hooks/useAsync";
 import { Navbar } from "../components/navbar";
 import { ROUTE_HOME } from "../constants/routes";
 import { Carousel } from "./slider";
+import { buildClassNames } from "../utils/css";
 
 function About() {
   let [searchParams, setSearchParams] = useSearchParams();
@@ -35,14 +36,20 @@ function About() {
 
   console.log(result);
   return (
-    <div className={"w-full h-full lg:flex text-secondary-50 pb-20"}>
+    <div
+      className={
+        "w-full h-full lg:flex text-secondary-50 pb-20 overflow-y-scroll"
+      }
+    >
       <div className="pt-8 pl-4">
         <Code markdown={result.md} className={"w-full"} />
       </div>
       <div
-        className={
-          "absolute z-2 bg-background right-0 top-0 shadow-sm rounded-md w-full md:w-[50vw] lg:w-[30vw] h-[93vh] border border-transparent border-l-stroke invisible md:visible"
-        }
+        className={buildClassNames(
+          "bg-background shadow-sm rounded-md w-full",
+          "relative md:absolute right-0 top-0 z-2 p-8 md:p-0",
+          "md:w-[50vw] lg:w-[30vw] md:h-[93vh] border border-transparent border-l-stroke"
+        )}
       >
         <nav
           className={

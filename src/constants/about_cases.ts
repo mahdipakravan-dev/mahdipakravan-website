@@ -5,6 +5,11 @@ export const About_cases: Case = {
   isParent: true,
   childs: [
     {
+      id: "S_2_4",
+      title: "me.tsx",
+      childs: [],
+    },
+    {
       id: "S_2",
       title: "Work experience",
       isDir: true,
