@@ -8,6 +8,7 @@ import { Navbar } from "../components/navbar";
 import { ROUTE_HOME } from "../constants/routes";
 import { Carousel } from "./slider";
 import { buildClassNames } from "../utils/css";
+import { keyBy } from "../utils/array";
 
 function About() {
   let [searchParams, setSearchParams] = useSearchParams();

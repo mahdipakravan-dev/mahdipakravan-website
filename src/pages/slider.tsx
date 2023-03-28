@@ -19,6 +19,7 @@ export const Carousel = memo(
 
     useLayoutEffect(() => {
       carouselApi?.reInit();
+      setCurrentSlide(0);
 
       carouselApi?.on("select", (e) => {
         setCurrentSlide(carouselApi?.selectedScrollSnap());
