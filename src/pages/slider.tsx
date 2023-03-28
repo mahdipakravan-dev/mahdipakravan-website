@@ -48,26 +48,28 @@ export const Carousel = memo(
           </p>
         </div>
 
-        <div className="embla__arrow">
-          <div
-            className={buildClassNames(
-              currentSlide !== 0 ? "visible" : "invisible"
-            )}
-            onClick={() => carouselApi?.scrollPrev()}
-          >
-            <i className="ri-arrow-left-line cursor-pointer" />
+        {props.gallery.length > 1 && (
+          <div className="embla__arrow">
+            <div
+              className={buildClassNames(
+                currentSlide !== 0 ? "visible" : "invisible"
+              )}
+              onClick={() => carouselApi?.scrollPrev()}
+            >
+              <i className="ri-arrow-left-line cursor-pointer" />
+            </div>
+            <div
+              className={buildClassNames(
+                currentSlide !== props.gallery.length - 1
+                  ? "visible"
+                  : "invisible"
+              )}
+              onClick={() => carouselApi?.scrollNext()}
+            >
+              <i className="ri-arrow-right-line cursor-pointer" />
+            </div>
           </div>
-          <div
-            className={buildClassNames(
-              currentSlide !== props.gallery.length - 1
-                ? "visible"
-                : "invisible"
-            )}
-            onClick={() => carouselApi?.scrollNext()}
-          >
-            <i className="ri-arrow-right-line cursor-pointer" />
-          </div>
-        </div>
+        )}
       </div>
     );
   },
