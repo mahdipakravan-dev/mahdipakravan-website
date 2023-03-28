@@ -70,7 +70,7 @@ class ResponseBuilder {
 
 export default [
   ResponseBuilder.clone()
-    .setUrl("/api/about?file=null")
+    .setUrl("/api/about?file=me.tsx")
     .setMd(about_md)
     .addGallery({
       src: "/self/2.jpeg",
@@ -165,9 +165,19 @@ export default [
     .setUrl("/api/about?file=Tavanasho")
     .setMd(tavanasho_md)
     .addGallery({
-      src: "/kian/1.jpg",
-      title: "i was developed iGapMessenger Web!",
-      desc: "here is the birthday of 6th year of iGap",
+      src: "/tavanasho/2.jpg",
+      title: "at the beginning , Web developer",
+      desc: "In the beginning, I was the designer of this company's website",
+    })
+    .addGallery({
+      src: "/tavanasho/1.jpg",
+      title: "then , Teacher !",
+      desc: "Then the teacher and mentor of web design courses",
+    })
+    .addGallery({
+      src: "/tavanasho/3.jpeg",
+      title: "Content creating",
+      desc: "after these steps , we created some content about web development and wordpress",
     })
     .build(),
 ];

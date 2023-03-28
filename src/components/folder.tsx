@@ -25,7 +25,8 @@ export const Folder = memo(
     onClick,
   }: Case & { onClick: (id: string) => void }) => {
     const [parentIsOpen, setParentIsOpen] = useState(true);
-    const [folderIsOpen, setFolderIsOpen] = useState(false);
+    const [folderIsOpen, setFolderIsOpen] = useState(true);
+    let [searchParams, setSearchParams] = useSearchParams();
 
     const renderParent = (title: string) => {
       return (
@@ -75,7 +76,8 @@ export const Folder = memo(
         <div
           className={buildClassNames(
             "flex items-between cursor-pointer",
-            !isDir && "hover:shadow-md"
+            !isDir && "hover:shadow-md",
+            searchParams.get("file") === title && "bg-primary-100"
           )}
           onClick={(e) => {
             if (e.currentTarget !== e.target) return;

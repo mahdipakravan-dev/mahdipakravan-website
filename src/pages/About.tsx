@@ -20,7 +20,7 @@ function About() {
     },
   ];
   const { run, result } = useAsync(
-    (fileName) =>
+    (fileName = "me.tsx") =>
       callApi("/api/about" + "?file=" + fileName, {})
         .then(JSON.parse)
         .catch((err) => {
@@ -32,6 +32,9 @@ function About() {
 
   console.log(result);
   useEffect(() => {
+    if (!searchParams.get("file")) {
+      setSearchParams({ file: "me.tsx" });
+    }
     run(searchParams.get("file"));
   }, [searchParams]);
 

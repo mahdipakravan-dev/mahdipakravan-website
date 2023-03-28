@@ -75,12 +75,12 @@ export const About_cases: Case = {
       childs: [
         {
           id: "S_3_2",
-          title: "Youngest mentor of Startup",
+          title: "Youngest-mentor",
           isDir: false,
         },
         {
           id: "S_3_1",
-          title: "Winner of IT Olympiad",
+          title: "IT-Olympiad",
           isDir: false,
         },
       ],
