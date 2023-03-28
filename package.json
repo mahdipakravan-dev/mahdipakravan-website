@@ -41,7 +41,7 @@
     "run-build-sw-claims-destroy": "cross-env DEBUG=vite-plugin-pwa:* BASE_URL=/ SOURCE_MAP=true SW_DESTROY=true CLAIMS=true SW=true vite build",
     "run-build-sw-reloadsw-claims-destroy": "cross-env DEBUG=vite-plugin-pwa:* BASE_URL=/ SOURCE_MAP=true SW_DESTROY=true CLAIMS=true RELOAD_SW=true SW=true vite build",
     "serve": "serve dist",
-    "mock": "json-server --watch mock/db.json"
+    "mock": "node mock"
   },
   "dependencies": {
     "@tailwindcss/forms": "^0.5.3",

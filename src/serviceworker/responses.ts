@@ -7,6 +7,7 @@ import {
   parax_md,
   tavanasho_md,
 } from "./md";
+import project_responses from "./responses-projects";
 
 type GalleryItem = {
   id?: number;
@@ -180,4 +181,5 @@ export default [
       desc: "after these steps , we created some content about web development and wordpress",
     })
     .build(),
+  ...project_responses,
 ];

@@ -1,4 +1,4 @@
-import { ConfigEnv, defineConfig, UserConfig } from "vite";
+import { ConfigEnv, UserConfig } from "vite";
 import reactRefresh from "@vitejs/plugin-react-refresh";
 import type { ManifestOptions, VitePWAOptions } from "vite-plugin-pwa";
 import { VitePWA } from "vite-plugin-pwa";
@@ -10,9 +10,9 @@ const pwaOptions: Partial<VitePWAOptions> = {
   base: "/",
   includeAssets: ["logo.png"],
   manifest: {
-    name: "PWA Router",
-    short_name: "PWA Router",
-    theme_color: "#ffffff",
+    name: "MahdiPakravan website !",
+    short_name: "mahdipakravan",
+    theme_color: "#011627",
     icons: [
       {
         src: "pwa-192x192.png", // <== don't add slash, for testing
@@ -66,8 +66,6 @@ if (reload) {
 
 if (selfDestroying) pwaOptions.selfDestroying = selfDestroying;
 export default ({ command, mode }: ConfigEnv): UserConfig => {
-  const root = process.cwd();
-
   return {
     base: process.env.BASE_URL || "https://github.com/",
     build: {
@@ -81,6 +79,3 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
     ],
   };
 };
-// export default defineConfig({
-
-// });
