@@ -75,7 +75,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       reactRefresh(),
       VitePWA(pwaOptions),
       replace(replaceOptions) as any,
-      viteCompression(),
+      // viteCompression(),
     ],
   };
 };
