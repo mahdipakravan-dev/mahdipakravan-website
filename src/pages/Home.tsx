@@ -4,6 +4,7 @@ import { Code } from "../components/code";
 import { buildClassNames } from "../utils/css";
 import { useOnMountAnimation } from "../utils/hooks/useOnMountAnimation";
 import Typist from "react-typist";
+import { TextAnimation } from "../components/text-animation";
 
 const md = `
 //welcome to my portfolio website !
@@ -36,7 +37,7 @@ const Introduce = memo(
   () => {
     return (
       <>
-        <Typist cursor={{ hideWhenDone: true }}>
+        <TextAnimation typistProps={{ cursor: { hideWhenDone: true } }}>
           <span
             className={buildClassNames(
               "font-regular text-sm text-secondary-50"
@@ -44,20 +45,30 @@ const Introduce = memo(
           >
             Hello everyone , I'm ...
           </span>
-        </Typist>
+        </TextAnimation>
         <span className={buildClassNames("font-semibold text-4xl mt-2")}>
-          <Typist startDelay={2000} cursor={{ show: false }}>
+          <TextAnimation
+            typistProps={{
+              startDelay: 2000,
+              cursor: { show: false },
+            }}
+          >
             Mahdi Pakravan.
-          </Typist>
+          </TextAnimation>
         </span>
         <span
           className={buildClassNames(
             "font-regular text-xl text-secondary-200 mt-2 mb-20"
           )}
         >
-          <Typist startDelay={3000} cursor={{ show: false }}>
+          <TextAnimation
+            typistProps={{
+              startDelay: 3000,
+              cursor: { show: false },
+            }}
+          >
             {"> Frontend Engineer"}
-          </Typist>
+          </TextAnimation>
         </span>
       </>
     );
