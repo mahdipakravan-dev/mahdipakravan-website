@@ -1,11 +1,17 @@
 import { useLocation } from "react-router";
-import { ROUTE_ABOUT, ROUTE_HOME, ROUTE_PROJECTS } from "../constants/routes";
+import {
+  ROUTE_ABOUT,
+  ROUTE_ADMIN,
+  ROUTE_HOME,
+  ROUTE_PROJECTS,
+} from "../constants/routes";
 import * as React from "react";
 import { buildClassNames } from "../utils/css";
 import { About_cases } from "../constants/about_cases";
 import { Projects_cases } from "../constants/projects_cases";
 import { Folder } from "./folder";
 import { useSearchParams } from "react-router-dom";
+import { Admin_cases } from "../constants/admin_cases";
 
 export const Aside = () => {
   const { pathname } = useLocation();
@@ -16,6 +22,7 @@ export const Aside = () => {
   const isInAboutRoute = pathname.includes(ROUTE_ABOUT);
   const isInHomeRoute = pathname.includes(ROUTE_HOME);
   const isInProjectsRoute = pathname.includes(ROUTE_PROJECTS);
+  const isInAdminRoute = pathname.includes(ROUTE_ADMIN);
 
   const onClickCheckbox = (id: string) => {
     let currentStacks = searchParams.get("stacks")?.split(",") || [];
@@ -40,6 +47,7 @@ export const Aside = () => {
       )}
     >
       <>{isInAboutRoute && <Folder onClick={onClickFile} {...About_cases} />}</>
+      <>{isInAdminRoute && <Folder onClick={onClickFile} {...Admin_cases} />}</>
       <>
         {isInProjectsRoute && (
           <Folder onClick={onClickCheckbox} {...Projects_cases} />
