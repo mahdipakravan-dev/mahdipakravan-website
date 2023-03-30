@@ -7,7 +7,7 @@ export const Admin = (props: Props) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   return (
-    <div className="w-3/6 grid items-center px-8 w-full pt-8">
+    <div className="w-3/6 grid items-center px-8 w-full pt-8 overflow-y-scroll">
       {searchParams.get("file") === "CreatePage" && <CreatePage />}
     </div>
   );

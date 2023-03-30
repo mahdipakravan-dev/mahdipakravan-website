@@ -1,22 +1,26 @@
 import * as React from "react";
 import { useForm } from "react-hook-form";
-import { callApi } from "../../../utils/api";
-import { REQUEST_FILE_UPLOAD } from "../../../constants/webservices";
 import { Button } from "../../../components/button";
-import { Upload } from "../../../components/upload";
 import { Input } from "../../../components/input";
+import { REQUEST_PAGE_CREATE } from "../../../constants/webservices";
+import { callApi } from "../../../utils/api";
 
 type Props = {};
 export const CreatePage = (props: Props) => {
-  const { register, handleSubmit, setValue } = useForm();
+  const { register, handleSubmit } = useForm();
 
   const onSubmit = (values: any) => {
     if (!values.parentId) delete values.parentId;
-    // callApi()
+    callApi(REQUEST_PAGE_CREATE, {
+      method: "post",
+      data: values,
+    })
+      .then(() => alert("OK,Created"))
+      .catch(() => alert("Errored , Check Console"));
   };
 
   return (
-    <div className="w-3/6 grid items-center px-8 w-full pt-8">
+    <div className="">
       <h1 className={"text-white mb-8"}>page/CreatePage</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Input
@@ -30,12 +34,12 @@ export const CreatePage = (props: Props) => {
           register={register("parentId")}
         />
         <div>
-          <label htmlFor="">_message : </label>
+          <label htmlFor="">Md : </label>
           <textarea
             id=""
-            rows={6}
+            rows={15}
             onResize={() => {}}
-            placeholder={"message"}
+            placeholder={"MD"}
             className={
               "bg-body border-2 border-stroke block mt-2 w-full rounded-lg bg-transparent"
             }
