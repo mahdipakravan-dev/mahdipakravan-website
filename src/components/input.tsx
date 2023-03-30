@@ -16,7 +16,7 @@ export const Input = (props: Props) => {
         type="text"
         placeholder={props.placeHolder}
         className={
-          "w-full mb-8 bg-transparent border border-stroke bg-body rounded-md mt-2"
+          "w-full mb-8 bg-transparent border border-stroke bg-body rounded-md mt-2 text-slate-300"
         }
         {...props.register}
       />
