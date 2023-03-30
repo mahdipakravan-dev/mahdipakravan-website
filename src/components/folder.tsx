@@ -112,7 +112,7 @@ export const Folder = memo(
             className={buildClassNames(
               "pl-4 pt-1",
               "transition-all",
-              shouldRenderChild ? "opacity-1 h-auto" : "opacity-0 h-0"
+              shouldRenderChild ? "opacity-1 h-auto" : "opacity-0 h-0 hidden"
             )}
           >
             {childs &&

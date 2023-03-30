@@ -19,5 +19,16 @@ export const Admin_cases: Case = {
         },
       ],
     },
+    {
+      id: "S_2_4",
+      title: "Gallery",
+      isDir: true,
+      childs: [
+        {
+          id: "S_2_4",
+          title: "CreateGallery",
+        },
+      ],
+    },
   ],
 };

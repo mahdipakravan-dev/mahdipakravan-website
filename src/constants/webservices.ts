@@ -5,3 +5,5 @@ export const REQUEST_CV = BASE_URL + "/cv";
 export const REQUEST_FILE_UPLOAD = BASE_URL + "/file/upload";
 
 export const REQUEST_PAGE_CREATE = BASE_URL + "/page/create";
+
+export const REQUEST_GALLERY_CREATE = BASE_URL + "/page/create";

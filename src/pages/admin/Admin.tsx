@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useSearchParams } from "react-router-dom";
 import { CreatePage } from "./page/create";
+import { CreateGallery } from "./gallery/create";
 
 type Props = {};
 export const Admin = (props: Props) => {
@@ -9,6 +10,7 @@ export const Admin = (props: Props) => {
   return (
     <div className="w-3/6 grid items-center px-8 w-full pt-8 overflow-y-scroll">
       {searchParams.get("file") === "CreatePage" && <CreatePage />}
+      {searchParams.get("file") === "CreateGallery" && <CreateGallery />}
     </div>
   );
 };
