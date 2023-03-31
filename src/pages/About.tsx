@@ -4,11 +4,9 @@ import { Code } from "../components/code";
 import { useSearchParams } from "react-router-dom";
 import { callApi } from "../utils/api";
 import useAsync from "../utils/hooks/useAsync";
-import { Navbar } from "../components/navbar";
 import { ROUTE_HOME } from "../constants/routes";
 import { Carousel } from "./slider";
 import { buildClassNames } from "../utils/css";
-import { keyBy } from "../utils/array";
 import { REQUEST_PAGE_FIND_ONE } from "../constants/webservices";
 
 function About() {
@@ -20,12 +18,15 @@ function About() {
       selected: true,
     },
   ];
-  const { run, result } = useAsync(
+  const { run, result } = useAsync<{
+    object: {
+      md: string;
+      gallery: any;
+    };
+  }>(
     (fileName = "me.tsx") =>
-      callApi(REQUEST_PAGE_FIND_ONE + "?file=" + fileName, {}).then(
-        (res) => res.object
-      ),
-    { defaultValue: "const need = 'wait...'" }
+      callApi(REQUEST_PAGE_FIND_ONE + "?file=" + fileName, {}),
+    {}
   );
 
   useEffect(() => {
@@ -35,7 +36,7 @@ function About() {
     run(searchParams.get("file"));
   }, [searchParams]);
 
-  console.log(result);
+  console.log("RESULT ", result);
   return (
     <div
       className={
@@ -43,7 +44,7 @@ function About() {
       }
     >
       <div className="pt-8 pl-4">
-        <Code markdown={result.md} className={"w-full"} />
+        <Code markdown={result?.object?.md} className={"w-full"} />
       </div>
       <div
         className={buildClassNames(
@@ -67,7 +68,7 @@ function About() {
         </nav>
         <div className="shadow">
           <div className={"w-full flex flex-col justify-start items-center"}>
-            <Carousel gallery={result.gallery || []} />
+            <Carousel gallery={result?.object?.gallery || []} />
           </div>
         </div>
       </div>

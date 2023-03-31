@@ -16,3 +16,7 @@ type Project = {
   stack: string;
   sourceCodeUrl: string;
 };
+
+type AppStorage = {
+  about__version?: number;
+};

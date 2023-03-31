@@ -16,7 +16,7 @@ export function callApi<T = any>(
       cache.match(url).then(function (response) {
         if (response) {
           response.text().then(function (data) {
-            resolve(data as T);
+            resolve(JSON.parse(data) as T);
           });
         } else {
           axios({
@@ -27,6 +27,12 @@ export function callApi<T = any>(
             .then((res) => {
               if (!res.data)
                 return reject("Response Payload is not acceptable");
+              cache.put(
+                url as string,
+                new Response(JSON.stringify(res.data), {
+                  headers: { "Content-Type": "application/json" },
+                })
+              );
               return resolve(res.data as T);
             })
             .catch((err) => {

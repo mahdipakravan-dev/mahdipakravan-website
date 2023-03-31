@@ -6,6 +6,7 @@ export const REQUEST_FILE_UPLOAD = BASE_URL + "/file/upload";
 
 export const REQUEST_PAGE_CREATE = BASE_URL + "/page/create";
 export const REQUEST_PAGE_FIND_ONE = BASE_URL + "/page/findOne-mocked";
+export const REQUEST_PAGE_FIND_MANY = BASE_URL + "/page/findMany-mocked";
 
 export const REQUEST_GALLERY_CREATE = BASE_URL + "/gallery/create";
 export const REQUEST_PROJECT_CREATE = BASE_URL + "/project/create";
