@@ -8,6 +8,8 @@ import { ROUTE_HOME } from "../constants/routes";
 import { Carousel } from "./slider";
 import { buildClassNames } from "../utils/css";
 import { REQUEST_PAGE_FIND_ONE } from "../constants/webservices";
+import { TextAnimation } from "../components/text-animation";
+import Typist from "react-typist";
 
 function About() {
   let [searchParams, setSearchParams] = useSearchParams();
@@ -18,7 +20,7 @@ function About() {
       selected: true,
     },
   ];
-  const { run, result } = useAsync<{
+  const { isLoading, run, result } = useAsync<{
     object: {
       md: string;
       gallery: any;
@@ -44,7 +46,18 @@ function About() {
       }
     >
       <div className="pt-8 pl-4">
-        <Code markdown={result?.object?.md} className={"w-full"} />
+        {isLoading ? (
+          <TextAnimation typistProps={{}}>
+            Please Wait my friend, it's loading...
+            <Typist.Backspace count={3} delay={3000} />
+            ...
+            <Typist.Backspace count={3} delay={300} />
+            ... :)
+            <Typist.Backspace count={6} delay={3000} />
+          </TextAnimation>
+        ) : (
+          <Code markdown={result?.object?.md} className={"w-full"} />
+        )}
       </div>
       <div
         className={buildClassNames(
@@ -68,7 +81,11 @@ function About() {
         </nav>
         <div className="shadow">
           <div className={"w-full flex flex-col justify-start items-center"}>
-            <Carousel gallery={result?.object?.gallery || []} />
+            {isLoading ? (
+              <TextAnimation typistProps={{}}>wait...</TextAnimation>
+            ) : (
+              <Carousel gallery={result?.object?.gallery || []} />
+            )}
           </div>
         </div>
       </div>

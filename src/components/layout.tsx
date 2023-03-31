@@ -13,10 +13,6 @@ type Props = PropsWithChildren;
 const gradient = "bg-background";
 
 export const Layout = (props: Props) => {
-  useEffect(() => {
-    checkAboutCache();
-  }, []);
-
   return (
     <>
       <div

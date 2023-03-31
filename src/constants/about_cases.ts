@@ -46,44 +46,5 @@ export const About_cases: Case = {
         },
       ],
     },
-    {
-      id: "S_3",
-      title: "Hobbies",
-      isDir: true,
-      childs: [
-        {
-          id: "S_3_3",
-          title: "Motorcycle",
-          isDir: false,
-        },
-        {
-          id: "S_3_2",
-          title: "VideoGame",
-          isDir: false,
-        },
-        {
-          id: "S_3_1",
-          title: "Soccer",
-          isDir: false,
-        },
-      ],
-    },
-    {
-      id: "S_3",
-      title: "Achievements",
-      isDir: true,
-      childs: [
-        {
-          id: "S_3_2",
-          title: "Youngest-mentor",
-          isDir: false,
-        },
-        {
-          id: "S_3_1",
-          title: "IT-Olympiad",
-          isDir: false,
-        },
-      ],
-    },
   ],
 };
