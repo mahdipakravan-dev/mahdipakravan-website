@@ -11,6 +11,9 @@ export const CreatePage = (props: Props) => {
 
   const onSubmit = (values: any) => {
     if (!values.parentId) delete values.parentId;
+    if (prompt("isDir ? ") === "y") {
+      values.isDir = true;
+    }
     callApi(REQUEST_PAGE_CREATE, {
       method: "post",
       data: values,

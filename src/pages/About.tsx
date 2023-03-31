@@ -9,6 +9,7 @@ import { ROUTE_HOME } from "../constants/routes";
 import { Carousel } from "./slider";
 import { buildClassNames } from "../utils/css";
 import { keyBy } from "../utils/array";
+import { REQUEST_PAGE_FIND_ONE } from "../constants/webservices";
 
 function About() {
   let [searchParams, setSearchParams] = useSearchParams();
@@ -21,16 +22,12 @@ function About() {
   ];
   const { run, result } = useAsync(
     (fileName = "me.tsx") =>
-      callApi("/api/about" + "?file=" + fileName, {})
-        .then(JSON.parse)
-        .catch((err) => {
-          console.log("RESPONSED ", JSON.parse(err));
-          return "";
-        }),
+      callApi(REQUEST_PAGE_FIND_ONE + "?file=" + fileName, {}).then(
+        (res) => res.object
+      ),
     { defaultValue: "const need = 'wait...'" }
   );
 
-  console.log(result);
   useEffect(() => {
     if (!searchParams.get("file")) {
       setSearchParams({ file: "me.tsx" });
