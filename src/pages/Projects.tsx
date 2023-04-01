@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { Code } from "../components/code";
 import "./Projects.css";
 import { Button } from "../components/button";
+import { useDownloadImage } from "../hooks/useDownloadImage";
 
 type Props = {};
 export const Projects = (props: Props) => {
@@ -33,37 +34,56 @@ export const Projects = (props: Props) => {
     });
   }, [searchParams]);
 
-  console.log("Result : ", getProjectsAsync.result);
   return (
-    <div className={"grid grid-cols-1 md:grid-cols-2 grid-cols-3 gap-2"}>
+    <div
+      className={
+        "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-24 overflow-y-scroll h-[90vh]"
+      }
+    >
       {getProjectsAsync.result?.items?.map((project) => (
-        <article className={"w-full p-2"}>
-          <header className={"flex justify-start items-center"}>
-            <span className={"text-secondary-200 text-sm mr-2"}>
-              {project.title}
-            </span>
-            <Code markdown={`//ui_animation`} />
-          </header>
-          <div className={"border border-stroke rounded-none rounded-t-2xl"}>
-            <div>
-              <img
-                src="/project-1.png"
-                alt=""
-                style={{
-                  width: "100%",
-                  objectFit: "contain",
-                }}
-              />
-            </div>
-            <div className="border border-stroke rounded-none rounded-b-md">
-              <p className={"text-secondary-50 text-xs py-4 px-1"}>
-                Duis aute irure dolor in velit esse cillum dolore.
-              </p>
-              <Button>See demo</Button>
-            </div>
-          </div>
-        </article>
+        <Project project={project} key={`__project__${project.id}`} />
       ))}
     </div>
+  );
+};
+
+const Project = ({ project }: { project: Project }) => {
+  const { image } = useDownloadImage(project.thumbnail);
+  return (
+    <article className={"w-full p-2 h-80"}>
+      <header className={"flex justify-start items-center"}>
+        <span className={"text-secondary-200 text-sm mr-2"}>
+          {project.title}
+        </span>
+        <Code markdown={`//${project.stacks.slice(0, 10)}...`} />
+      </header>
+      <div
+        className={
+          "border border-stroke rounded-none rounded-t-2xl overflow-hidden"
+        }
+      >
+        <div className={"h-60"}>
+          <img
+            src={image}
+            alt=""
+            className={"w-full h-full"}
+            style={{
+              objectFit: "cover",
+            }}
+          />
+        </div>
+        <div className="border border-stroke rounded-none rounded-b-md  py-2 px-1">
+          <span className="block text-lg font-semibold text-secondary-200">{`${project.title}`}</span>
+          <p className={"text-secondary-50 text-xs pt-2"}>
+            the , {project.title}
+          </p>
+          <div className={"flex justify-between"}>
+            {project.link && <Button>project</Button>}
+            {project.sourceCodeUrl && <Button>source</Button>}
+            {project.demoUrl && <Button>demo</Button>}
+          </div>
+        </div>
+      </div>
+    </article>
   );
 };

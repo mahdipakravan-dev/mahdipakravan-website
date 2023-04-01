@@ -1,4 +1,5 @@
 export const CACHE_API_KEY = "MAHDI__CACHE";
+export const IDB_KEY = "MAHDI__IDB";
 export const STORAGE_APP = "MAHDI__APP";
 
 export function getAppStorage(): AppStorage | undefined {
