@@ -5,7 +5,7 @@ import { Navbar } from "./navbar";
 import "./layout.css";
 import { Aside } from "./aside";
 import { Footer } from "./footer";
-import { Modal } from "./modal";
+import { goToPopup, loadPopUp, Modal } from "./modal";
 import { checkAboutCache } from "../utils/cache/cache-about";
 
 type Props = PropsWithChildren;
@@ -13,6 +13,9 @@ type Props = PropsWithChildren;
 const gradient = "bg-background";
 
 export const Layout = (props: Props) => {
+  useEffect(() => {
+    loadPopUp("prompt");
+  }, []);
   return (
     <>
       <div

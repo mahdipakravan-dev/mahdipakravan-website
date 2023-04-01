@@ -1,8 +1,6 @@
 import React from "react";
 import "./Home.css";
 import { Code } from "../components/code";
-import { useSearchParams } from "react-router-dom";
-import { Tweet } from "../components/tweet";
 import { Button } from "../components/button";
 import { useForm } from "react-hook-form";
 import { Input } from "../components/input";
@@ -23,7 +21,9 @@ function About() {
     {
       onSuccess: () => {
         goToPopup("prompt", {
-          message: "Your message has just been sent to me!",
+          title: "Thank you !",
+          message: "I will reply quickly :)",
+          closeTimeout: 5000,
         });
       },
     }
