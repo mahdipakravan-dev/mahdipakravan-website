@@ -4,69 +4,102 @@ import { Code } from "../components/code";
 import { useSearchParams } from "react-router-dom";
 import { Tweet } from "../components/tweet";
 import { Button } from "../components/button";
+import { useForm } from "react-hook-form";
+import { Input } from "../components/input";
+import { TextAnimation } from "../components/text-animation";
+import useAsync from "../utils/hooks/useAsync";
+import { callApi } from "../utils/api";
+import { REQUEST_CONTACT_CREATE } from "../constants/webservices";
+import { LoadingBlur } from "../components/loading-blur";
+import { goToPopup } from "../components/modal";
 
-const md = `
+function About() {
+  const { run, isLoading } = useAsync(
+    (data) =>
+      callApi(REQUEST_CONTACT_CREATE, {
+        method: "post",
+        data,
+      }),
+    {
+      onSuccess: () => {
+        goToPopup("prompt", {
+          message: "Your message has just been sent to me!",
+        });
+      },
+    }
+  );
+  const { register, handleSubmit, watch } = useForm({
+    mode: "onChange",
+  });
+  const md = `
 const button = document.querySelector('#sendBtn');
 const message = {
-name: "Jonathan Davis",
-email: "jonathan-davis@gmail.com",
-message: "Hey! Just checked your website and it looks awesome! Also \n, I checked your articled on Medium. Lerned a few nice tips. Thanks!",
-date: "Thu 21 Apr"
+name: "${
+    watch("name")?.length > 19
+      ? watch("name")?.slice(0, 19) + "..."
+      : watch("name") || ""
+  }",
+email:  "${
+    watch("email")?.length > 19
+      ? watch("email")?.slice(0, 19) + "..."
+      : watch("email") || ""
+  }",
+message:  "${
+    watch("message")?.length > 19
+      ? watch("message")?.slice(0, 19) + "..."
+      : watch("message" + "") || ""
+  }",
+date: "${new Date().toDateString()}"
 }
 
 button.addEventListener('click', () => {
 form.send(message);
 })
 `;
-function About() {
-  let [searchParams, setSearchParams] = useSearchParams();
 
-  console.log(searchParams.get("name"));
+  const onSubmit = (values: Object) => {
+    run(values);
+  };
 
   return (
     <div
-      className={
-        "w-full h-full md:flex justify-between text-secondary-50 pb-20"
-      }
+      className={"w-full h-full md:flex justify-start text-secondary-50 pb-20"}
     >
-      <div className="w-3/6 grid items-center px-8 w-full pt-8">
-        <form action="">
-          <div>
-            <label htmlFor="">_name : </label>
-            <input
-              type="text"
-              placeholder={"ex : Cristiano Ronaldo!"}
-              className={
-                "w-full mb-8 bg-transparent border border-stroke bg-body rounded-md mt-2"
-              }
-            />
+      <div className="w-3/6 grid items-center px-8 w-full pt-8 relative ">
+        {isLoading && <LoadingBlur />}
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className={"pb-6"}>
+            <span className={"text-sm font-semibold"}>Contact us :) </span>
+            <TextAnimation typistProps={{ className: "text-xs" }}>
+              Your message will be sent and read to me immediately !
+            </TextAnimation>
           </div>
-          <div>
-            <label htmlFor="">_email : </label>
-            <input
-              type="email"
-              placeholder={"ex : cristiano@ronaldo.com"}
-              className={
-                "w-full mb-8 bg-transparent border border-stroke bg-body rounded-md mt-2"
-              }
-            />
-          </div>
-
+          <Input
+            label={"_name"}
+            placeHolder={"name"}
+            register={register("name")}
+          />
+          <Input
+            label={"_email"}
+            placeHolder={"email"}
+            register={register("email")}
+          />
           <div>
             <label htmlFor="">_message : </label>
             <textarea
-              name=""
-              id=""
               rows={6}
               onResize={() => {}}
               placeholder={"message"}
               className={
                 "bg-body border-2 border-stroke block mt-2 w-full rounded-lg bg-transparent"
               }
+              {...register("message")}
             />
           </div>
           <Button
-            className={"bg-stroke text-secondary-300 text-sm p-2 rounded mt-2"}
+            className={
+              "bg-stroke text-secondary-300 text-sm p-2 rounded mt-2 w-full"
+            }
           >
             submit-message
           </Button>

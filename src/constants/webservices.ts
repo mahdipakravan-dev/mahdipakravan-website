@@ -11,3 +11,5 @@ export const REQUEST_GALLERY_CREATE = BASE_URL_API + "/gallery/create";
 
 export const REQUEST_PROJECT_CREATE = BASE_URL_API + "/project/create";
 export const REQUEST_PROJECTS = BASE_URL_API + "/project/paginate";
+
+export const REQUEST_CONTACT_CREATE = BASE_URL_API + "/contact/create";
