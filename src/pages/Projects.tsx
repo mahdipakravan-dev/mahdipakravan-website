@@ -10,13 +10,20 @@ import { Button } from "../components/button";
 
 type Props = {};
 export const Projects = (props: Props) => {
-  let [searchParams, setSearchParams] = useSearchParams();
-  const getProjectsAsync = useAsync<Array<Project>>(
+  let [searchParams] = useSearchParams();
+  const getProjectsAsync = useAsync<{ items: Array<Project> }>(
     ({ stacks }: { stacks: string }) => {
       console.log({ stacks });
-      return callApi(REQUEST_PROJECTS + `?stack_like=(${stacks})`, {
-        method: "get",
-      });
+      return callApi(
+        REQUEST_PROJECTS +
+          `?page=1&limit=11${
+            stacks?.length ? "&stack=" + stacks.replace("|", ",") : ""
+          }`,
+        {
+          method: "get",
+        },
+        { useCache: false }
+      );
     }
   );
 
@@ -29,7 +36,7 @@ export const Projects = (props: Props) => {
   console.log("Result : ", getProjectsAsync.result);
   return (
     <div className={"grid grid-cols-1 md:grid-cols-2 grid-cols-3 gap-2"}>
-      {getProjectsAsync.result?.map((project) => (
+      {getProjectsAsync.result?.items?.map((project) => (
         <article className={"w-full p-2"}>
           <header className={"flex justify-start items-center"}>
             <span className={"text-secondary-200 text-sm mr-2"}>
