@@ -1,4 +1,4 @@
-export const BASE_URL = "http://mahdipakravan.ir:3000/";
+export const BASE_URL = "http://api.mahdipakravan.ir/";
 export const BASE_URL_API = BASE_URL + "api";
 export const REQUEST_NAVIGATION = BASE_URL_API + "/navbar";
 export const REQUEST_CV = BASE_URL_API + "/cv";

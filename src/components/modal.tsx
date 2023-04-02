@@ -4,27 +4,34 @@ import { buildClassNames } from "../utils/css";
 export let goToPopup = (modalName?: string, payload?: any) => {};
 export let loadPopUp = (modalName?: string) => {};
 
+const PromptModal = lazy(() => import("./modals/prompt"));
+
 type Props = {};
 export const Modal = (props: Props) => {
   const [showModal, setShowModal] = useState(false);
-  const [Component, setComponent] = useState<any>();
+  const [componentName, setComponentName] = useState<any>();
   const [payload, setPayload] = useState({});
+
+  const modalsMap: Record<string, any> = {
+    prompt: PromptModal,
+  };
+
+  const Component = componentName ? modalsMap[componentName] : undefined;
 
   useEffect(() => {
     goToPopup = (modalName, payload) => {
       if (!modalName) {
         setShowModal(false);
-        setComponent(undefined);
+        setComponentName(undefined);
         return;
       }
       if (payload) setPayload(payload);
       setShowModal(true);
       setTimeout(async () => {
-        /* @vite-ignore */
-        setComponent(lazy(() => import(`./modals/${modalName}`)));
+        setComponentName(modalName);
       });
     };
-    loadPopUp = (modalName) => import(`./modals/${modalName}`);
+    loadPopUp = (modalName) => modalsMap[modalName as string];
   }, []);
 
   return (

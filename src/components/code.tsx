@@ -9,16 +9,13 @@ type Props = {
 } & HTMLAttributes<HTMLPreElement>;
 export const Code = ({ markdown, ...attr }: Props) => {
   useEffect(() => {
-    hljs.highlightAll();
-  });
+    // hljs.highlightAll();
+  }, []);
 
   console.log(attr.className);
   return (
     <div className={"max-w-screen"}>
-      <pre
-        {...attr}
-        // className={buildClassNames(...(attr.className || ""), "max-w-screen")}
-      >
+      <pre {...attr}>
         <code className="language-typescript rounded">{markdown}</code>
       </pre>
     </div>
