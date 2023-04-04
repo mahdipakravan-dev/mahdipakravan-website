@@ -20,7 +20,7 @@ export const Layout = (props: Props) => {
     <>
       <div
         className={buildClassNames(
-          "relative border border-stroke rounded middle_wrap",
+          "relative border border-stroke rounded middle_wrap w-screen",
           gradient
         )}
       >

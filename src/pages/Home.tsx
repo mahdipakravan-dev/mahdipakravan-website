@@ -8,7 +8,7 @@ import { TextAnimation } from "../components/text-animation";
 const md = `
 //welcome to my portfolio-web!
 
-const github = 'https://github.com/mahdipakravan'
+const github = 'github.com/mahdipakravan-dev'
 `;
 
 function Home() {

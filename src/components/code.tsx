@@ -16,7 +16,9 @@ export const Code = ({ markdown, ...attr }: Props) => {
   return (
     <div className={"max-w-screen"}>
       <pre {...attr}>
-        <code className="language-typescript rounded text-sm">{markdown}</code>
+        <code className="language-typescript rounded text-xs md:text-sm">
+          {markdown}
+        </code>
       </pre>
     </div>
   );
