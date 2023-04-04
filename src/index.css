@@ -5,7 +5,7 @@
 body {
     @apply bg-body;
     font-family: Fira, serif;
-    overflow: hidden;
+    overflow: hidden !important;
 }
 
 pre:focus-visible{

@@ -61,9 +61,9 @@ function About() {
       </div>
       <div
         className={buildClassNames(
-          "bg-background shadow-sm rounded-md w-full",
+          "hidden md:block bg-background shadow-sm rounded-md w-full",
           "relative md:absolute right-0 top-0 z-2 p-8 md:p-0",
-          "md:w-[50vw] lg:w-[30vw] md:h-[93vh] border border-transparent border-l-stroke"
+          "md:w-[50vw] lg:w-[30vw] md:h-[98vh] border border-transparent border-l-stroke"
         )}
       >
         <nav
@@ -81,10 +81,13 @@ function About() {
         </nav>
         <div className="shadow">
           <div className={"w-full flex flex-col justify-start items-center"}>
-            {isLoading ? (
+            {isLoading || !result?.object?.gallery ? (
               <TextAnimation typistProps={{}}>wait...</TextAnimation>
             ) : (
-              <Carousel gallery={result?.object?.gallery || []} />
+              <Carousel
+                fileName={searchParams.get("file") || ""}
+                gallery={result?.object?.gallery}
+              />
             )}
           </div>
         </div>

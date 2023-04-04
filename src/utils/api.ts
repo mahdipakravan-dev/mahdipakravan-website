@@ -10,10 +10,10 @@ export function callApi<T = any>(
     saveCache?: boolean;
   }
 ): Promise<T> {
-  const { authorized, useCache, saveCache } = options ?? {
+  const { authorized, useCache, saveCache } = {
     authorized: true,
-    useCache: true,
-    saveCache: true,
+    useCache: false,
+    saveCache: false,
   };
   return new Promise((resolve, reject) => {
     const headers = {
