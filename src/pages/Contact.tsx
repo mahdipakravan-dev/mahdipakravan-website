@@ -107,7 +107,7 @@ form.send(message);
       </div>
       <div
         className={
-          "w-3/6 grid items-center border border-transparent p-2 border-l-stroke pt-8 overflow-hide text-sm"
+          "hidden md:block w-3/6 grid items-center border border-transparent p-2 border-l-stroke pt-8 overflow-hide text-sm"
         }
       >
         <Code markdown={md} />

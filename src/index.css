@@ -1,7 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+* {
+    overflow-x: hidden;
+}
 body {
     @apply bg-body;
     font-family: Fira, serif;
