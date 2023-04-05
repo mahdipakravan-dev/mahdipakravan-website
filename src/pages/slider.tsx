@@ -18,7 +18,9 @@ type Props = {
 };
 export const Carousel = (props: Props) => {
   const byKey = keyBy(props.gallery, "id");
-  const [ref, carouselApi] = useEmblaCarousel();
+  const [ref, carouselApi] = useEmblaCarousel({ loop: false }, [
+    Autoplay({ delay: 4000 }),
+  ]);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [canScrollNext, setCanScrollNext] = useState(false);
   const [canScrollPrev, setCanScrollPrev] = useState(false);
@@ -35,6 +37,8 @@ export const Carousel = (props: Props) => {
 
     carouselApi?.on("select", onSelect);
   }, [carouselApi]);
+
+  console.log(props.gallery);
 
   return (
     <div className="embla" ref={ref}>

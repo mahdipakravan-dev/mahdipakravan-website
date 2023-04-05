@@ -5,6 +5,7 @@ export let goToPopup = (modalName?: string, payload?: any) => {};
 export let loadPopUp = (modalName?: string) => {};
 
 const PromptModal = lazy(() => import("./modals/prompt"));
+const StoryModal = lazy(() => import("./modals/story"));
 
 type Props = {};
 export const Modal = (props: Props) => {
@@ -14,6 +15,7 @@ export const Modal = (props: Props) => {
 
   const modalsMap: Record<string, any> = {
     prompt: PromptModal,
+    story: StoryModal,
   };
 
   const Component = componentName ? modalsMap[componentName] : undefined;
