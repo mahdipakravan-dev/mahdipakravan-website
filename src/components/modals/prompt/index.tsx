@@ -20,7 +20,7 @@ const Prompt = (props: Props) => {
       <div>
         <TextAnimation>
           {props.title}
-          <Typist.Backspace delay={200} count={50} />
+          <Typist.Backspace delay={200} count={18} />
           {props.message}
         </TextAnimation>
       </div>
