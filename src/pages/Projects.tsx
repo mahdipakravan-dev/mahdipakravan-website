@@ -8,6 +8,10 @@ import { Code } from "../components/code";
 import "./Projects.css";
 import { Button } from "../components/button";
 import { useDownloadImage } from "../hooks/useDownloadImage";
+import { LoadingBlur } from "../components/loading-blur";
+import { goToPopup } from "../components/modal";
+
+let hintedBefore = false;
 
 type Props = {};
 export const Projects = (props: Props) => {
@@ -27,6 +31,20 @@ export const Projects = (props: Props) => {
       );
     }
   );
+
+  useEffect(() => {
+    if (!hintedBefore) {
+      goToPopup("prompt", {
+        title: "being completed...",
+        message: "will be better in the next version :)",
+        closeTimeout: 10000,
+      });
+
+      setTimeout(() => {
+        hintedBefore = true;
+      }, 6000);
+    }
+  }, []);
 
   useEffect(() => {
     getProjectsAsync.run({
