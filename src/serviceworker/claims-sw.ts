@@ -25,18 +25,3 @@ registerRoute(
 
 self.skipWaiting();
 clientsClaim();
-
-const cacheName = "MAHDI_CACHE";
-
-const mockedResponses = responses.map((res) => ({
-  url: res?.url,
-  response: new Response(JSON.stringify(res?.object), {
-    headers: { "Content-Type": "text/plain" },
-  }),
-}));
-
-caches.open(cacheName).then((cache) => {
-  mockedResponses.forEach((mockedResponse) => {
-    cache.put(mockedResponse.url as string, mockedResponse.response);
-  });
-});

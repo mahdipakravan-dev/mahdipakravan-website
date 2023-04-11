@@ -13,6 +13,12 @@ type Project = {
   id: string;
   title: string;
   link: string;
-  stack: string;
+  stacks: string;
   sourceCodeUrl: string;
+  demoUrl: string;
+  thumbnail: string;
+};
+
+type AppStorage = {
+  about__version?: number;
 };

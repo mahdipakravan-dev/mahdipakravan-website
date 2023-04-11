@@ -78,7 +78,7 @@ export const Navbar = ({
           "z-20",
           navbarOpen
             ? "visible h-auto opacity-1 top-10"
-            : "invisible h-0 opacity-0 -top-10",
+            : "invisible hidden h-0 opacity-0 -top-10",
           "transition-all ease-in-out duration-300",
           "absolute block md:hidden w-full flex flex-col list-none text-secondary-300 text-sm font-thin bg-background",
           "border border-transparent border-t-stroke"

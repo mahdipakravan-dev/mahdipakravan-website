@@ -10,9 +10,27 @@ export const Footer = () => {
     >
       <div>
         <span className={"hidden md:contents"}>find me in : </span>
-        <IconLink icon={"ri-twitch-fill"} className={"md:pl-2"} />
-        <IconLink icon={"ri-twitter-fill"} />
-        <IconLink icon={"ri-telegram-fill"} />
+        <IconLink
+          icon={"ri-twitch-fill"}
+          className={"md:pl-2"}
+          onClick={() => {
+            window.open("http://instagram.com/mahdipakravan", "_blank");
+          }}
+        />
+        <IconLink
+          className={"z-10"}
+          icon={"ri-telegram-fill"}
+          onClick={() => {
+            window.open("http://t.me/mahdipakravan", "_blank");
+          }}
+        />
+        <IconLink
+          className={"z-10"}
+          icon={"ri-instagram-fill"}
+          onClick={() => {
+            window.open("http://instagram.com/mahdipakravan", "_blank");
+          }}
+        />
       </div>
       <Link
         icon={<i className={"ri-github-fill pr-2"} />}

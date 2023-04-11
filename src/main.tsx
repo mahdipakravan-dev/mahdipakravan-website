@@ -8,6 +8,7 @@ import { Layout } from "./components/layout";
 
 import {
   ROUTE_ABOUT,
+  ROUTE_ADMIN,
   ROUTE_BLOG,
   ROUTE_CONTACT,
   ROUTE_HOME,
@@ -15,6 +16,7 @@ import {
   ROUTE_PROJECTS,
 } from "./constants/routes";
 import { Projects } from "./pages/Projects";
+import { Admin } from "./pages/admin/Admin";
 
 const Contact = lazy(() => import("./pages/Contact"));
 const App = lazy(() => import("./App"));
@@ -73,6 +75,15 @@ createRoot(document.getElementById("app")!).render(
             element={
               <Suspense fallback={<>...</>}>
                 <Contact />
+              </Suspense>
+            }
+          />
+          <Route
+            index
+            path={ROUTE_ADMIN}
+            element={
+              <Suspense fallback={<>...</>}>
+                <Admin />
               </Suspense>
             }
           />

@@ -2,6 +2,7 @@ import { memo, useState } from "react";
 import { buildClassNames } from "../utils/css";
 import * as React from "react";
 import { useSearchParams } from "react-router-dom";
+import { isMobile } from "../utils/responsive";
 
 const renderArrow = (isOpen: boolean) => {
   return (
@@ -24,7 +25,7 @@ export const Folder = memo(
     isCheckBox,
     onClick,
   }: Case & { onClick: (id: string) => void }) => {
-    const [parentIsOpen, setParentIsOpen] = useState(true);
+    const [parentIsOpen, setParentIsOpen] = useState(!isMobile());
     const [folderIsOpen, setFolderIsOpen] = useState(true);
     let [searchParams, setSearchParams] = useSearchParams();
 
@@ -80,6 +81,12 @@ export const Folder = memo(
             searchParams.get("file") === title && "bg-primary-100"
           )}
           onClick={(e) => {
+            if (isMobile()) {
+              setTimeout(() => {
+                setParentIsOpen(false);
+                setFolderIsOpen(false);
+              }, 1000);
+            }
             if (e.currentTarget !== e.target) return;
             if (isDir) return setFolderIsOpen((p) => !p);
             onClick(title);
@@ -112,7 +119,7 @@ export const Folder = memo(
             className={buildClassNames(
               "pl-4 pt-1",
               "transition-all",
-              shouldRenderChild ? "opacity-1 h-auto" : "opacity-0 h-0"
+              shouldRenderChild ? "opacity-1 h-auto" : "opacity-0 h-0 hidden"
             )}
           >
             {childs &&

@@ -35,7 +35,12 @@ const useAsync = <T = any, P = any>(
     );
   };
 
-  return { isLoading, error, result: result as T, run };
+  const setData = (response: T) => {
+    setResult(response);
+    setIsLoading(false);
+  };
+
+  return { isLoading, error, result: result as T, setData, run };
 };
 
 export default useAsync;

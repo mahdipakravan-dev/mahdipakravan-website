@@ -1,6 +1,7 @@
 {
   "name": "MahdiPakravan",
   "version": "0.0.1",
+  "main": "./src/main.tsx",
   "private": true,
   "scripts": {
     "dev": "rimraf dev-dist && cross-env DEBUG=vite-plugin-pwa:* SW_DEV=true vite --force",
@@ -49,15 +50,19 @@
     "embla-carousel-autoplay": "^7.1.0",
     "embla-carousel-react": "^7.1.0",
     "highlight.js": "^11.7.0",
+    "localforage": "^1.10.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-highlight": "^0.15.0",
+    "react-hook-form": "^7.43.8",
     "react-router": "^6.4.5",
     "react-router-config": "^5.1.1",
     "react-router-dom": "^6.4.5",
     "react-typist": "^2.0.5",
     "remixicon": "^2.5.0",
-    "swiper": "^9.1.1"
+    "swiper": "^9.1.1",
+    "vite": "4.1.4",
+    "yup": "^1.0.2"
   },
   "devDependencies": {
     "@rollup/plugin-replace": "^5.0.1",
@@ -80,7 +85,6 @@
     "serve": "^14.2.0",
     "tailwindcss": "^3.2.7",
     "typescript": "^4.9.4",
-    "vite": "^4.0.0",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-html": "^3.2.0",
     "vite-plugin-pwa": "workspace:*",

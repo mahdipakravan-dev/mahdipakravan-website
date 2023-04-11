@@ -7,7 +7,7 @@ export const Button = ({ children, ...elementProps }: Props) => {
   return (
     <button
       className={buildClassNames(
-        "bg-stroke text-secondary-300 text-sm p-2 rounded m-2 cursor-pointer hover:shadow-md",
+        "bg-stroke text-secondary-300 text-sm p-2 rounded m-2 cursor-pointer hover:shadow-md w-full",
         elementProps.className && elementProps.className
       )}
       {...elementProps}
