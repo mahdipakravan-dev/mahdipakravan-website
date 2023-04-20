@@ -25,7 +25,6 @@ const About = lazy(() => import("./pages/About"));
 
 createRoot(document.getElementById("app")!).render(
   <BrowserRouter>
-             ;
     <Layout>
       <Routes>
         <Route path={ROUTE_PREFIX} element={<App />}>
