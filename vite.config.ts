@@ -5,29 +5,55 @@ import { VitePWA } from "vite-plugin-pwa";
 import replace from "@rollup/plugin-replace";
 import viteCompression from "vite-plugin-compression";
 
-const pwaOptions: Partial<VitePWAOptions> = {
+const pwaOptions: Record<string, any> = {
   mode: "development",
   includeAssets: ["logo.png"],
+  description: "portfolio website of MahdiPakravan , developed by reactJS .",
+  start_url: "/",
+  display: "standalone",
+  background_color: "#ffffff",
+  lang: "en",
+  scope: "/",
+  theme_color: "#011627",
+  dir: "ltr",
+  orientation: "portrait",
+  display_override: ["standalone"],
+  related_applications: [],
+  shortcuts: [
+    {
+      name: "MahdiPakravan",
+      url: "https://mahdipakravan.ir",
+      description: "Mahdipkarvan shortcut",
+    },
+  ],
   manifest: {
     name: "MahdiPakravan website !",
     short_name: "mahdipakravan",
     theme_color: "#011627",
     icons: [
       {
-        src: "pwa-192x192.png", // <== don't add slash, for testing
+        src: "icons/android/android-launchericon-512-512.png",
+        sizes: "512x512",
+      },
+      {
+        src: "icons/android/android-launchericon-192-192.png",
         sizes: "192x192",
-        type: "image/png",
       },
       {
-        src: "/pwa-512x512.png", // <== don't remove slash, for testing
-        sizes: "512x512",
-        type: "image/png",
+        src: "icons/android/android-launchericon-144-144.png",
+        sizes: "144x144",
       },
       {
-        src: "pwa-512x512.png", // <== don't add slash, for testing
-        sizes: "512x512",
-        type: "image/png",
-        purpose: "any maskable",
+        src: "icons/android/android-launchericon-96-96.png",
+        sizes: "96x96",
+      },
+      {
+        src: "icons/android/android-launchericon-72-72.png",
+        sizes: "72x72",
+      },
+      {
+        src: "icons/android/android-launchericon-48-48.png",
+        sizes: "48x48",
       },
     ],
   },
