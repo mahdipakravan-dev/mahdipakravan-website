@@ -1,25 +1,18 @@
 import * as React from "react";
+import { HTMLAttributes } from "react";
 import "./code.css";
-import hljs from "highlight.js";
-import { HTMLAttributes, useEffect } from "react";
-import { buildClassNames } from "../utils/css";
+import Highlight from "react-highlight";
 
 type Props = {
   markdown: string;
 } & HTMLAttributes<HTMLPreElement>;
 export const Code = ({ markdown, ...attr }: Props) => {
-  useEffect(() => {
-    hljs.highlightAll();
-  }, []);
-
   console.log(attr.className);
   return (
     <div className={"max-w-screen"}>
-      <pre {...attr}>
-        <code className="language-typescript rounded text-xs md:text-sm">
-          {markdown}
-        </code>
-      </pre>
+      <Highlight className="language-typescript rounded text-xs md:text-sm">
+        {markdown}
+      </Highlight>
     </div>
   );
 };

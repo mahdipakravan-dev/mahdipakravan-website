@@ -7,7 +7,6 @@ import viteCompression from "vite-plugin-compression";
 
 const pwaOptions: Record<string, any> = {
   mode: "development",
-  base: "/",
   includeAssets: ["logo.png"],
   description: "portfolio website of MahdiPakravan , developed by reactJS .",
   start_url: "/",
@@ -79,8 +78,9 @@ if (process.env.SW === "true") {
     : "serviceworker/prompt-sw.ts";
   pwaOptions.strategies = "injectManifest";
   (pwaOptions.manifest as Partial<ManifestOptions>).name =
-    "PWA Inject Manifest";
-  (pwaOptions.manifest as Partial<ManifestOptions>).short_name = "PWA Inject";
+    "MahdiPakravan | Portfolio website";
+  (pwaOptions.manifest as Partial<ManifestOptions>).short_name =
+    "MahdiPakravan";
 }
 
 if (claims) pwaOptions.registerType = "autoUpdate";
@@ -93,10 +93,7 @@ if (reload) {
 if (selfDestroying) pwaOptions.selfDestroying = selfDestroying;
 export default ({ command, mode }: ConfigEnv): UserConfig => {
   return {
-    base: process.env.BASE_URL || "https://github.com/",
-    build: {
-      sourcemap: process.env.SOURCE_MAP === "true",
-    },
+    base: "/",
     plugins: [
       reactRefresh(),
       VitePWA(pwaOptions),
